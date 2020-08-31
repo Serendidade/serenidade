@@ -1,0 +1,8 @@
+{
+  "type": "mysql",
+  "host": "mysql669.umbler.com",
+  "port": 41890,
+  "username": "development_usr",
+  "password": "development",
+  "database": "serenidade"
+}
