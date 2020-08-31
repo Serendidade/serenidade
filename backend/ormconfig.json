@@ -4,5 +4,14 @@
   "port": 41890,
   "username": "development_usr",
   "password": "development",
-  "database": "serenidade"
+  "database": "serenidade",
+  "entities": [
+    "./src/models/*.ts"
+  ],
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
 }
