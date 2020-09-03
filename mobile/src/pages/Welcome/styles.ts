@@ -10,6 +10,13 @@ export const Container = styled.View`
   margin-bottom: 15px;
 `
 
+export const ImageFlowerSit = styled.Image`
+  width: 100%;
+  height: 179px;
+  flex: 2;
+  align-self: center;
+`
+
 export const ContainerPhrases = styled.View`
   align-items: center;
   justify-content: center;

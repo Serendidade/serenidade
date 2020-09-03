@@ -8,7 +8,14 @@ export const Container = styled.View`
   align-items: flex-start;
   justify-content: flex-end;
   padding: 0 25px;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
+`
+
+export const ImageFlowerSit = styled.Image`
+  width: 213px;
+  height: 179px;
+  align-self: center;
+  margin-top: 30px;
 `
 
 export const Title = styled.Text`
@@ -16,6 +23,7 @@ export const Title = styled.Text`
   line-height: 33px;
   font-family: ${fonts.regular};
   color: ${colors.secondaryColor};
+  margin-bottom: 50px;
 `
 
 export const Label = styled.Text`
