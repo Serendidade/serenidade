@@ -12,7 +12,7 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: { backgroundColor: '#fff' }
     }}
-    initialRouteName='SignIn'
+    initialRouteName='Welcome'
   >
     <Auth.Screen name="Welcome" component={Welcome} />
     <Auth.Screen name="SignIn" component={SignIn} />

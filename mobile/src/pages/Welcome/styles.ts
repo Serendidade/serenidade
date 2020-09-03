@@ -42,9 +42,9 @@ export const SignUpButton = styled.TouchableOpacity`
 `
 
 export const ButtonText = styled.Text`
-font-family: ${fonts.bold};
+  font-family: ${fonts.bold};
   color: ${colors.primatyAccentColor};
-  font-size: 20px;
+  font-size: 24px;
   line-height: 27px;
   margin-bottom: 23px;
 `
