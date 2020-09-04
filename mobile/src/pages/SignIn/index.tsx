@@ -1,12 +1,14 @@
 import React, { useRef, useCallback } from 'react'
 import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
+import { useNavigation } from '@react-navigation/core'
 import { KeyboardAvoidingView, Platform, ScrollView, TextInput } from 'react-native'
 
 import Button from '../../components/Button'
 import Input from '../../components/Input'
-import { Container, Title, Label, ImageFlowerSit } from './styles'
 import logo from '../../assets/lotus_flower_sit.png'
+
+import { Container, Title, Label, ImageFlowerSit } from './styles'
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
@@ -22,6 +24,7 @@ const SignIn: React.FC = () => {
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
+
         <ScrollView contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled">
 

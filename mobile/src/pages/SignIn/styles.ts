@@ -5,10 +5,12 @@ import fonts from '../../global/fonts'
 
 export const Container = styled.View`
   flex: 1;
-  align-items: flex-start;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: 0 25px;
   margin-bottom: 50px;
+  flex-direction: column;
+
 `
 
 export const ImageFlowerSit = styled.Image`
@@ -23,7 +25,7 @@ export const Title = styled.Text`
   line-height: 33px;
   font-family: ${fonts.regular};
   color: ${colors.secondaryColor};
-  margin-bottom: 50px;
+
 `
 
 export const Label = styled.Text`
@@ -32,5 +34,5 @@ export const Label = styled.Text`
   font-family: ${fonts.regular};
   color: ${colors.secondaryAccentColor};
   margin-top: 30px;
-  margin-bottom: 10px;
+
 `

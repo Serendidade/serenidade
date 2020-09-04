@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/core'
 
 import colors from '../../global/colors'
 import i18n from '../../i18n/texts'
-import logo from '../../assets/lotus_flower_sit.png'
+import logo from '../../assets/pregnant.png'
 
 const Welcome: React.FC = () => {
   const navigation = useNavigation()
@@ -23,6 +23,7 @@ const Welcome: React.FC = () => {
       <ImageFlowerSit source={logo} />
 
       <Container>
+
         <Title>Já tem uma conta?</Title>
         <SignInButton onPress={() => { navigation.navigate('SignIn') }}>
           <ButtonText>Entrar</ButtonText>

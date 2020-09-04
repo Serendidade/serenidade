@@ -11,9 +11,6 @@ export const Container = styled.View`
 `
 
 export const ImageFlowerSit = styled.Image`
-  width: 100%;
-  height: 179px;
-  flex: 2;
   align-self: center;
 `
 
@@ -54,4 +51,5 @@ export const ButtonText = styled.Text`
   font-size: 24px;
   line-height: 27px;
   margin-bottom: 23px;
+  padding-top: 5px;
 `
