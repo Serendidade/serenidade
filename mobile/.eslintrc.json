@@ -21,6 +21,7 @@
     "prettier"
   ],
   "rules": {
+    "camelcase": "off",
     "comma-dangle":"off",
     "prettier/prettier": 0,
     "react/jsx-one-expression-per-line": "off",
