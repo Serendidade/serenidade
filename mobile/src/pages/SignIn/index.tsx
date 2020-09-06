@@ -12,7 +12,7 @@ import logo from '../../assets/lotus_flower_sit.png'
 import getValidationErrors from '../../utils/getValidationError'
 
 import { Container, Title, Label, ImageFlowerSit } from './styles'
-import BackButton from '../../components/BackButton'
+import Icon from '../../components/Icon'
 
 interface SignInFormData {
   email: string
@@ -75,7 +75,7 @@ const SignIn: React.FC = () => {
 
         <ScrollView contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled">
-          <BackButton name="arrow-left-right-line" size={24} onPress={() => { navigation.goBack() }}/>
+          <Icon name="arrow-left-right-line" size={24} onPress={() => { navigation.goBack() }}/>
           <Container>
             <ImageFlowerSit source={logo} />
             <Title>Informe seu login para continuar</Title>

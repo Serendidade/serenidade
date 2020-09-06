@@ -11,7 +11,7 @@ import Input from '../../components/Input'
 import getValidationErrors from '../../utils/getValidationError'
 
 import { Container, Title, Label } from './styles'
-import BackButton from '../../components/BackButton'
+import Icon from '../../components/Icon'
 
 interface SignUpFormData {
   name: string
@@ -76,10 +76,10 @@ const SignUp: React.FC = () => {
         <ScrollView contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled">
 
-          <BackButton name="arrow-left-right-line" size={24} onPress={() => { navigation.goBack() }}/>
+          <Icon name="arrow-left-right-line" size={24} onPress={() => { navigation.goBack() }}/>
           <Container>
-            <Title>Informe seu login para continuar</Title>
 
+            <Title>Informe seu login para continuar</Title>
             <Form ref={formRef} onSubmit={handleSignUp} style={{ width: '100%' }}>
               <Label>Nome</Label>
               <Input
