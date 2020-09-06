@@ -31,7 +31,7 @@ const Welcome: React.FC = () => {
 
         <Title>Ainda não?</Title>
         <SignUpButton>
-          <ButtonText>Criar nova conta</ButtonText>
+          <ButtonText onPress={() => { navigation.navigate('SignUp') }}>Criar nova conta</ButtonText>
         </SignUpButton>
       </Container>
     </View>

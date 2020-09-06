@@ -2,38 +2,36 @@ import React, { useRef, useCallback } from 'react'
 import * as Yup from 'yup'
 import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
-import { KeyboardAvoidingView, Platform, ScrollView, TextInput, Alert } from 'react-native'
+import api from '../../services/api'
 import { useNavigation } from '@react-navigation/native'
+import { KeyboardAvoidingView, Platform, ScrollView, TextInput, Alert } from 'react-native'
 
-import { useAuth } from '../../hooks/auth'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
-import logo from '../../assets/lotus_flower_sit.png'
 import getValidationErrors from '../../utils/getValidationError'
 
-import { Container, Title, Label, ImageFlowerSit } from './styles'
+import { Container, Title, Label } from './styles'
 import BackButton from '../../components/BackButton'
 
-interface SignInFormData {
+interface SignUpFormData {
+  name: string
   email: string
   password: string
 }
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const passwordInputRef = useRef<TextInput>(null)
-
-  const { signIn, user } = useAuth()
+  const emailInputRef = useRef<TextInput>(null)
 
   const navigation = useNavigation()
 
-  console.log(user)
-
-  const handleSignIn = useCallback(async (data: SignInFormData) => {
+  const handleSignUp = useCallback(async (data: SignUpFormData) => {
     try {
       formRef.current?.setErrors({})
 
       const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
         email: Yup.string()
           .required('E-mail obrigatório')
           .email('Digite um e-mail válido'),
@@ -44,10 +42,12 @@ const SignIn: React.FC = () => {
         abortEarly: false,
       })
 
-      await signIn({
-        email: data.email,
-        password: data.password,
-      })
+      await api.post('/users', data)
+
+      Alert.alert(
+        'Cadastro realizado com sucesso!',
+        'Você já pode fazer login na aplicação.'
+      )
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err)
@@ -64,7 +64,7 @@ const SignIn: React.FC = () => {
         'Ocorreu um erro ao fazer login, cheque as credenciais.'
       )
     }
-  }, [signIn])
+  }, [])
 
   return (
     <>
@@ -75,14 +75,28 @@ const SignIn: React.FC = () => {
 
         <ScrollView contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled">
+
           <BackButton name="arrow-left-right-line" size={24} onPress={() => { navigation.goBack() }}/>
           <Container>
-            <ImageFlowerSit source={logo} />
             <Title>Informe seu login para continuar</Title>
 
-            <Form ref={formRef} onSubmit={handleSignIn} style={{ width: '100%' }}>
+            <Form ref={formRef} onSubmit={handleSignUp} style={{ width: '100%' }}>
+              <Label>Nome</Label>
+              <Input
+                icon=""
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="name-phone-pad"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  emailInputRef.current?.focus()
+                }}
+                name="name"
+              />
+
               <Label>E-mail</Label>
               <Input
+                ref={emailInputRef}
                 icon="mail"
                 autoCorrect={false}
                 autoCapitalize="none"
@@ -120,4 +134,4 @@ const SignIn: React.FC = () => {
   )
 }
 
-export default SignIn
+export default SignUp

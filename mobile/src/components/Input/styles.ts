@@ -17,7 +17,7 @@ export const Container = styled.View`
 export const TextInput = styled.TextInput<InputProps>`
   color: ${colors.secondaryColor};
   font-size: 16px;
-  font-family: ${fonts.regular};
+  font-family: ${fonts.bold};
   border-bottom-width: 1px;
   border-bottom-color: ${colors.primaryColor};
   padding-left: 0px;
