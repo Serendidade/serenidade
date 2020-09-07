@@ -156,6 +156,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            multiDexEnabled true
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -163,6 +164,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            multiDexEnabled true
         }
     }
 
@@ -191,6 +193,8 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
     implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

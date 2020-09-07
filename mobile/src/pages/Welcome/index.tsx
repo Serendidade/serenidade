@@ -1,11 +1,11 @@
 import React from 'react'
 import { View } from 'react-native'
-import { Container, ContainerPhrases, Title, SubTitle, SignInButton, SignUpButton, ButtonText, ImageFlowerSit } from './styles'
+import { Container, ContainerPhrases, Title, SubTitle, SignInButton, SignUpButton, ButtonText, ContainerSocialLogin } from './styles'
 import { useNavigation } from '@react-navigation/core'
+import { GoogleSigninButton } from '@react-native-community/google-signin'
 
 import colors from '../../global/colors'
 import i18n from '../../i18n/texts'
-import logo from '../../assets/pregnant.png'
 
 const Welcome: React.FC = () => {
   const navigation = useNavigation()
@@ -20,8 +20,6 @@ const Welcome: React.FC = () => {
         <SubTitle>{i18n.sub_greetings}</SubTitle>
       </ContainerPhrases>
 
-      <ImageFlowerSit source={logo} />
-
       <Container>
 
         <Title>Já tem uma conta?</Title>
@@ -34,6 +32,12 @@ const Welcome: React.FC = () => {
           <ButtonText onPress={() => { navigation.navigate('SignUp') }}>Criar nova conta</ButtonText>
         </SignUpButton>
       </Container>
+      <ContainerSocialLogin>
+        <GoogleSigninButton
+          size={GoogleSigninButton.Size.Standard}
+          color={GoogleSigninButton.Color.Dark}
+        />
+      </ContainerSocialLogin>
     </View>
   )
 }

@@ -10,8 +10,9 @@ export const Container = styled.View`
   margin-bottom: 15px;
 `
 
-export const ImageFlowerSit = styled.Image`
-  align-self: center;
+export const ContainerSocialLogin = styled.View`
+  align-items: center;
+
 `
 
 export const ContainerPhrases = styled.View`
