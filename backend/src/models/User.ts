@@ -20,6 +20,9 @@ class User {
   @Column()
   password: string
 
+  @Column()
+  google_id?: string
+
   @CreateDateColumn()
   created_at: Date
 
