@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
 import { v4 } from 'uuid'
 import User from '../models/User'
+import AppError from '../errors/Error'
 
 interface Request {
   name: string
@@ -24,7 +25,7 @@ class CreateUserService {
     })
 
     if (checkUsersExists) {
-      throw new Error('User from google aready exists')
+      throw new AppError('User from google aready exists')
     }
 
     const hashedPassword = await hash(password, 8)
