@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "455693349856",
-    "firebase_url": "https://serenidade-f5897.firebaseio.com",
-    "project_id": "serenidade-f5897",
-    "storage_bucket": "serenidade-f5897.appspot.com"
+    "project_number": "635073479787",
+    "firebase_url": "https://serenity-11bce.firebaseio.com",
+    "project_id": "serenity-11bce",
+    "storage_bucket": "serenity-11bce.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:455693349856:android:d8d259ff2daeb19a5d7185",
+        "mobilesdk_app_id": "1:635073479787:android:18e05c9856e433499c5d2e",
         "android_client_info": {
-          "package_name": "com.mobile"
+          "package_name": "ucb.mobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "455693349856-f65uebcr34jmrik7se7n8i0mj893kvpv.apps.googleusercontent.com",
+          "client_id": "635073479787-gnoiqu0p15ktpgifkp4lidg80ncgepqi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.mobile",
-            "certificate_hash": "c50b66dddad31d992dd19adcd1dc5793c741e07c"
+            "package_name": "ucb.mobile",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },
         {
-          "client_id": "455693349856-kd8ud9n06e89cetk2bghjvm973j16g29.apps.googleusercontent.com",
+          "client_id": "635073479787-dth76pl1niioobfl7vcam1q6j1phvtmu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDkFbjqDjeQM_stABPt0fLyfFb8e3IkXFg"
+          "current_key": "AIzaSyAZV8Gs9Az1GesFYwLFYwngdJ9jnb6sd5k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "455693349856-kd8ud9n06e89cetk2bghjvm973j16g29.apps.googleusercontent.com",
+              "client_id": "635073479787-dth76pl1niioobfl7vcam1q6j1phvtmu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

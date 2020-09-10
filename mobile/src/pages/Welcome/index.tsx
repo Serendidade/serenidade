@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
-import { Container, ContainerPhrases, Title, SubTitle, SignInButton, SignUpButton, ButtonText, ContainerSocialLogin } from './styles'
+import { Container, ContainerPhrases, Title, SubTitle, SignInButton, SignUpButton, ButtonText } from './styles'
 import { useNavigation } from '@react-navigation/core'
-import { GoogleSigninButton } from '@react-native-community/google-signin'
+import { GoogleSignin } from '@react-native-community/google-signin'
 
+import { GOOGLE_WEBCLIENT_ID } from '@env'
 import colors from '../../global/colors'
 import i18n from '../../i18n/texts'
 
 const Welcome: React.FC = () => {
   const navigation = useNavigation()
+
+  useEffect(() => {
+    GoogleSignin.configure({ webClientId: GOOGLE_WEBCLIENT_ID })
+  }, [])
+
   return (
     <View style={{
       backgroundColor: colors.primaryColor,
@@ -32,12 +38,6 @@ const Welcome: React.FC = () => {
           <ButtonText onPress={() => { navigation.navigate('SignUp') }}>Criar nova conta</ButtonText>
         </SignUpButton>
       </Container>
-      <ContainerSocialLogin>
-        <GoogleSigninButton
-          size={GoogleSigninButton.Size.Standard}
-          color={GoogleSigninButton.Color.Dark}
-        />
-      </ContainerSocialLogin>
     </View>
   )
 }

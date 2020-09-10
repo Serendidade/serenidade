@@ -1,4 +1,4 @@
-package com.mobile;
+package ucb.mobile;
 
 import com.facebook.react.ReactActivity;
 

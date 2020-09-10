@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import { StatusBar, View } from 'react-native'

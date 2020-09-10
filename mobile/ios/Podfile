@@ -14,6 +14,12 @@ target 'mobile' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/@react-native-community/google-signin'
 
+  pod 'react-native-twitter-signin', :path => '../node_modules/react-native-twitter-signin'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'mobileTests' do
     inherit! :complete
     # Pods for testing

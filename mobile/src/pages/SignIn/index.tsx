@@ -112,7 +112,6 @@ const SignIn: React.FC = () => {
                 formRef.current?.submitForm()
               }}
             >Entrar</Button>
-
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>

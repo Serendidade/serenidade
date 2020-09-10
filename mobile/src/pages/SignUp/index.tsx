@@ -77,8 +77,8 @@ const SignUp: React.FC = () => {
           keyboardShouldPersistTaps="handled">
 
           <Icon name="arrow-left-right-line" size={24} onPress={() => { navigation.goBack() }}/>
-          <Container>
 
+          <Container>
             <Title>Informe seu login para continuar</Title>
             <Form ref={formRef} onSubmit={handleSignUp} style={{ width: '100%' }}>
               <Label>Nome</Label>
@@ -126,7 +126,6 @@ const SignUp: React.FC = () => {
                 formRef.current?.submitForm()
               }}
             >Entrar</Button>
-
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
