@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
-import { Container, ContainerPhrases, Title, SubTitle, SignInButton, SignUpButton, ButtonText } from './styles'
 import { useNavigation } from '@react-navigation/core'
 import { GoogleSignin } from '@react-native-community/google-signin'
-
 import { GOOGLE_WEBCLIENT_ID } from '@env'
+
 import colors from '../../global/colors'
-import i18n from '../../i18n/texts'
+import { Container, Title, Button, ButtonText, ButtonContainer, ButtonIcon } from './styles'
 
 const Welcome: React.FC = () => {
   const navigation = useNavigation()
@@ -17,26 +16,28 @@ const Welcome: React.FC = () => {
 
   return (
     <View style={{
-      backgroundColor: colors.primaryColor,
+      backgroundColor: colors.primatyAccentColor,
       height: '100%',
     }}>
 
-      <ContainerPhrases>
-        <Title>{i18n.greetings}</Title>
-        <SubTitle>{i18n.sub_greetings}</SubTitle>
-      </ContainerPhrases>
-
       <Container>
+        <Title>Ja possui uma conta?</Title>
 
-        <Title>Já tem uma conta?</Title>
-        <SignInButton onPress={() => { navigation.navigate('SignIn') }}>
-          <ButtonText>Entrar</ButtonText>
-        </SignInButton>
+        <ButtonContainer >
+          <ButtonIcon name="login" size={28} onPress={() => navigation.navigate('SignIn')}/>
+          <Button onPress={() => navigation.navigate('SignIn')}>
+            <ButtonText>Quero acessar</ButtonText>
+          </Button>
+        </ButtonContainer>
 
-        <Title>Ainda não?</Title>
-        <SignUpButton>
-          <ButtonText onPress={() => { navigation.navigate('SignUp') }}>Criar nova conta</ButtonText>
-        </SignUpButton>
+        <Title>Ainda não tem?</Title>
+
+        <ButtonContainer>
+          <ButtonIcon name="account-plus-outline" size={28} />
+          <Button onPress={() => navigation.navigate('SignUp')}>
+            <ButtonText>Criar conta</ButtonText>
+          </Button>
+        </ButtonContainer>
       </Container>
     </View>
   )

@@ -2,29 +2,46 @@ import styled from 'styled-components/native'
 
 import colors from '../../global/colors'
 import fonts from '../../global/fonts'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+export const HeaderContainer = styled.View`
+  flex-direction: column;
+  background-color: ${colors.spectres.purple[0]};
+  width: 100%;
+  padding: 10px 10px;
+`
+
+export const HeaderTitle = styled.Text`
+  font-family: ${fonts.raleway.bold};
+  font-size: 30px;
+  color: ${colors.spectres.white[0]};
+  margin-top: 5px;
+`
+
+export const HeaderIcon = styled(Icon)`
+ color: ${colors.spectres.white[0]};
+ padding: 5px 0px;
+`
 export const Container = styled.View`
-  flex: 1;
+  justify-content: center;
+  padding: 15px;
+`
+export const SubContainer = styled.View`
   align-items: center;
   justify-content: center;
-  padding: 0 25px;
-  margin-bottom: 50px;
-  flex-direction: column;
+  padding: 25px 25px;
 `
 
 export const Title = styled.Text`
-  font-size: 24px;
-  line-height: 33px;
-  font-family: ${fonts.regular};
-  color: ${colors.secondaryColor};
+  font-size: 20px;
+  font-family: ${fonts.quicksand.regular};
+  color: ${colors.secondaryAccentColor};
 
 `
 
 export const Label = styled.Text`
   font-size: 18px;
-  line-height: 25px;
-  font-family: ${fonts.regular};
+  font-family: ${fonts.quicksand.regular};
   color: ${colors.secondaryAccentColor};
-  margin-top: 30px;
-
+  margin-top: 10px;
 `

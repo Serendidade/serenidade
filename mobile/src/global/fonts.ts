@@ -1,5 +1,12 @@
 export default {
-  light: 'Metropolis-Light',
-  regular: 'Metropolis-Regular',
-  bold: 'Metropolis-Bold'
+  raleway: {
+    regular: 'Raleway-Regular',
+    medium: 'Raleway-Medium',
+    bold: 'Raleway-Bold'
+  },
+  quicksand: {
+    regular: 'Quicksand-Regular',
+    medium: 'Quicksand-Medium',
+    bold: 'Quicksand-Bold'
+  }
 }
