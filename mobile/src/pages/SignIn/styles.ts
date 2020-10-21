@@ -28,7 +28,6 @@ export const Container = styled.View`
   justify-content: center;
   flex-direction: column;
   padding: 15px;
-
 `
 
 export const SubContainer = styled.View`

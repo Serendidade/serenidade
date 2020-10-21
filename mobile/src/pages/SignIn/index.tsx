@@ -73,10 +73,10 @@ const SignIn: React.FC = () => {
         <HeaderTitle>Acessar minha conta</HeaderTitle>
       </HeaderContainer>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={{ flex: 1, }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
-        <ScrollView contentContainerStyle={{ backgroundColor: '#FAFAFB' }}
+        <ScrollView contentContainerStyle={{ backgroundColor: '#fff' }}
           keyboardShouldPersistTaps="handled">
 
           <Container>
