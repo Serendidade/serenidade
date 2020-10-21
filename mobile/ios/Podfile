@@ -2,6 +2,7 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '10.0'
+$FirebaseSDKVersion = '6.34.0'
 
 target 'mobile' do
   config = use_native_modules!
@@ -14,7 +15,6 @@ target 'mobile' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/@react-native-community/google-signin'
 
-  pod 'react-native-twitter-signin', :path => '../node_modules/react-native-twitter-signin'
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
