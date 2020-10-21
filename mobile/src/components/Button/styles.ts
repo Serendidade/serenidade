@@ -7,7 +7,7 @@ import fonts from '../../global/fonts'
 
 export const Container = styled(RectButton)`
   width: 100%;
-  height: 50px;
+  height: ${dimensions.button.height};
   background: ${colors.primaryColor};
   border: 1px solid #EAAAB8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -21,8 +21,7 @@ export const Container = styled(RectButton)`
 `
 
 export const ButtonText = styled.Text`
-  color: ${colors.primatyAccentColor};
-  font-size: ${dimensions.textSize.title};
-  line-height: 27px;
+  color: ${colors.spectres.white[0]};
+  font-size: ${dimensions.button.text};
   font-family: ${fonts.quicksand.medium}
 `

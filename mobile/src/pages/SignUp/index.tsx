@@ -10,9 +10,8 @@ import Button from '../../components/Button'
 import GoogleButton from '../../components/GoogleButton'
 import Input from '../../components/Input'
 import getValidationErrors from '../../utils/getValidationError'
-
-import { Container, Title, Label, SubContainer, HeaderContainer, HeaderTitle, HeaderIcon } from './styles'
-import Icon from '../../components/Icon'
+import dimensions from '../../global/dimensions'
+import { Container, Label, SubContainer, HeaderContainer, HeaderTitle, HeaderIcon } from './styles'
 import { GoogleSignin, statusCodes, User as GoogleUser } from '@react-native-community/google-signin'
 
 interface SignUpFormData {
@@ -130,7 +129,7 @@ const SignUp: React.FC = () => {
   return (
     <>
       <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
-        <HeaderIcon name="arrow-left" size={24} onPress={() => { navigation.goBack() }}/>
+        <HeaderIcon name="arrow-left" size={dimensions.icon} onPress={() => { navigation.goBack() }}/>
         <HeaderTitle>Criar minha conta</HeaderTitle>
       </HeaderContainer>
       <KeyboardAvoidingView

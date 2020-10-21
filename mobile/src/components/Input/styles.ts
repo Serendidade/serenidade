@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components/native'
 import colors from '../../global/colors'
 import fonts from '../../global/fonts'
+import dimensions from '../../global/dimensions'
+
 
 interface InputProps {
   isFocused: boolean
@@ -9,11 +11,13 @@ interface InputProps {
 
 export const Container = styled.View`
   width: 100%;
+  padding: 15px 0px;
+
 `
 
 export const TextInput = styled.TextInput<InputProps>`
   color: ${colors.spectres.grey[2]};
-  font-size: 16px;
+  font-size: ${dimensions.textSize.textInput};
   font-family: ${fonts.quicksand.regular};
   border-bottom-width: 2px;
   border-bottom-color: ${colors.spectres.grey[3]};

@@ -5,6 +5,7 @@ import { GoogleSignin } from '@react-native-community/google-signin'
 import { GOOGLE_WEBCLIENT_ID } from '@env'
 
 import colors from '../../global/colors'
+import dimensions from '../../global/dimensions'
 import { Container, Title, Button, ButtonText, ButtonContainer, ButtonIcon } from './styles'
 
 const Welcome: React.FC = () => {
@@ -24,7 +25,7 @@ const Welcome: React.FC = () => {
         <Title>Ja possui uma conta?</Title>
 
         <ButtonContainer >
-          <ButtonIcon name="login" size={28} onPress={() => navigation.navigate('SignIn')}/>
+          <ButtonIcon name="login" size={dimensions.icon} onPress={() => navigation.navigate('SignIn')}/>
           <Button onPress={() => navigation.navigate('SignIn')}>
             <ButtonText>Quero acessar</ButtonText>
           </Button>
@@ -33,7 +34,7 @@ const Welcome: React.FC = () => {
         <Title>Ainda não tem?</Title>
 
         <ButtonContainer>
-          <ButtonIcon name="account-plus-outline" size={28} />
+          <ButtonIcon name="account-plus-outline" size={dimensions.icon} />
           <Button onPress={() => navigation.navigate('SignUp')}>
             <ButtonText>Criar conta</ButtonText>
           </Button>

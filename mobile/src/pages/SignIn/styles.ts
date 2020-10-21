@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 
 import colors from '../../global/colors'
 import fonts from '../../global/fonts'
+import dimensions from '../../global/dimensions'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export const HeaderContainer = styled.View`
@@ -13,7 +14,7 @@ export const HeaderContainer = styled.View`
 
 export const HeaderTitle = styled.Text`
   font-family: ${fonts.raleway.bold};
-  font-size: 30px;
+  font-size: ${dimensions.textSize.titleHeader};
   color: ${colors.spectres.white[0]};
   margin-top: 5px;
 `
@@ -48,20 +49,20 @@ export const RegisterButton = styled.TouchableOpacity`
 `
 
 export const RegisterButtonText = styled.Text`
-  font-size: 20px;
+  font-size: ${dimensions.textSize.title};
   font-family: ${fonts.quicksand.bold};
   color: ${colors.spectres.grey[0]};
 `
 
 export const Title = styled.Text`
-  font-size: 20px;
+  font-size: ${dimensions.textSize.title};
   font-family: ${fonts.quicksand.regular};
   color: ${colors.spectres.grey[1]};
 
 `
 
 export const Label = styled.Text`
-  font-size: 20px;
+  font-size: ${dimensions.textSize.label};
   font-family: ${fonts.quicksand.regular};
   color: ${colors.spectres.grey[1]};
   margin-top: 30px;

@@ -13,6 +13,7 @@ import Input from '../../components/Input'
 import getValidationErrors from '../../utils/getValidationError'
 
 import { Container, Title, Label, SubContainer, HeaderContainer, HeaderTitle, HeaderIcon, RegisterContainer, RegisterButton, RegisterButtonText } from './styles'
+import dimensions from '../../global/dimensions'
 
 interface SignInFormData {
   email: string
@@ -69,7 +70,7 @@ const SignIn: React.FC = () => {
   return (
     <>
       <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
-        <HeaderIcon name="arrow-left" size={24} onPress={() => { navigation.goBack() }}/>
+        <HeaderIcon name="arrow-left" size={dimensions.icon} onPress={() => { navigation.goBack() }}/>
         <HeaderTitle>Acessar minha conta</HeaderTitle>
       </HeaderContainer>
       <KeyboardAvoidingView
@@ -78,7 +79,6 @@ const SignIn: React.FC = () => {
         enabled>
         <ScrollView contentContainerStyle={{ backgroundColor: '#fff' }}
           keyboardShouldPersistTaps="handled">
-
           <Container>
             <Form ref={formRef} onSubmit={handleSignIn} style={{ width: '100%' }}>
               <Label>E-mail</Label>

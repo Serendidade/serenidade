@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 
 import colors from '../../global/colors'
 import fonts from '../../global/fonts'
+import dimensions from '../../global/dimensions'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export const HeaderContainer = styled.View`
@@ -13,7 +14,7 @@ export const HeaderContainer = styled.View`
 
 export const HeaderTitle = styled.Text`
   font-family: ${fonts.raleway.bold};
-  font-size: 30px;
+  font-size: ${dimensions.textSize.titleHeader};
   color: ${colors.spectres.white[0]};
   margin-top: 5px;
 `
