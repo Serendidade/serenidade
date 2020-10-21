@@ -7,12 +7,12 @@ import { useNavigation } from '@react-navigation/native'
 
 import { useAuth } from '../../hooks/auth'
 import Button from '../../components/Button'
+import GoogleButton from '../../components/GoogleButton'
 import Input from '../../components/Input'
-import logo from '../../assets/lotus_flower_sit.png'
+// import { Svg, Path } from 'react-native-svg'
 import getValidationErrors from '../../utils/getValidationError'
 
-import { Container, Title, Label, ImageFlowerSit } from './styles'
-import Icon from '../../components/Icon'
+import { Container, Title, Label, SubContainer, HeaderContainer, HeaderTitle, HeaderIcon, RegisterContainer, RegisterButton, RegisterButtonText } from './styles'
 
 interface SignInFormData {
   email: string
@@ -68,18 +68,18 @@ const SignIn: React.FC = () => {
 
   return (
     <>
+      <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
+        <HeaderIcon name="arrow-left" size={24} onPress={() => { navigation.goBack() }}/>
+        <HeaderTitle>Acessar minha conta</HeaderTitle>
+      </HeaderContainer>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
-
-        <ScrollView contentContainerStyle={{ flex: 1 }}
+        <ScrollView contentContainerStyle={{ backgroundColor: '#FAFAFB' }}
           keyboardShouldPersistTaps="handled">
-          <Icon name="arrow-left-right-line" size={24} onPress={() => { navigation.goBack() }}/>
-          <Container>
-            <ImageFlowerSit source={logo} />
-            <Title>Informe seu login para continuar</Title>
 
+          <Container>
             <Form ref={formRef} onSubmit={handleSignIn} style={{ width: '100%' }}>
               <Label>E-mail</Label>
               <Input
@@ -105,14 +105,23 @@ const SignIn: React.FC = () => {
                 name="password"
                 icon="lock"
               />
-
             </Form>
+          </Container>
+          <SubContainer>
             <Button
               onPress={() => {
                 formRef.current?.submitForm()
               }}
             >Entrar</Button>
-          </Container>
+            <GoogleButton />
+          </SubContainer>
+
+          <RegisterContainer>
+            <Title>Nao tem uma conta?</Title>
+            <RegisterButton onPress={() => navigation.navigate('SignUp')}>
+              <RegisterButtonText>Registre-se</RegisterButtonText>
+            </RegisterButton>
+          </RegisterContainer>
         </ScrollView>
       </KeyboardAvoidingView>
     </>

@@ -1,56 +1,37 @@
 import styled from 'styled-components/native'
 import colors from '../../global/colors'
+import dimensions from '../../global/dimensions'
 import fonts from '../../global/fonts'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export const Container = styled.View`
   flex: 1;
   align-items: flex-start;
   justify-content: flex-end;
-  padding: 0 10px;
-  margin-bottom: 15px;
-`
-
-export const ContainerSocialLogin = styled.View`
-  align-items: center;
+  margin: 0px 15px 0px;
 
 `
-
-export const ContainerPhrases = styled.View`
-  align-items: center;
-  justify-content: center;
-  padding: 10px 10px;
-`
-
 export const Title = styled.Text`
-  font-size: 24px;
-  font-family: ${fonts.regular};
-  color: ${colors.primatyAccentColor};
-  line-height: 33px;
-  text-align: center;
+  font-family: ${fonts.quicksand.regular};
+  font-size: ${dimensions.textSize.title};
+  color: ${colors.spectres.grey[0]};
 `
 
-export const SubTitle = styled.Text`
-  font-family: ${fonts.light};
-  color: ${colors.primatyAccentColor};
-  font-size: 16px;
-  line-height: 22px;
-  text-align: center;
-  margin-top: 10px;
+export const ButtonContainer = styled.View`
+  width: 100%;
+  align-items: baseline;
+  flex-direction: row;
 `
 
-export const SignInButton = styled.TouchableOpacity`
-  margin-top: 4px;
-`
-
-export const SignUpButton = styled.TouchableOpacity`
-  margin-top: 4px;
+export const Button = styled.TouchableOpacity`
+  padding: 15px;
 `
 
 export const ButtonText = styled.Text`
-  font-family: ${fonts.bold};
-  color: ${colors.primatyAccentColor};
-  font-size: 24px;
-  line-height: 27px;
-  margin-bottom: 23px;
-  padding-top: 5px;
+  font-family: ${fonts.quicksand.bold};
+  font-size: ${dimensions.textSize.title};
+  color: ${colors.spectres.green[0]};
+`
+export const ButtonIcon = styled(Icon)`
+  color: ${colors.spectres.green[0]};
 `

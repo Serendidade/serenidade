@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 import { RectButton } from 'react-native-gesture-handler'
 
 import colors from '../../global/colors'
+import dimensions from '../../global/dimensions'
 import fonts from '../../global/fonts'
 
 export const Container = styled(RectButton)`
@@ -21,7 +22,7 @@ export const Container = styled(RectButton)`
 
 export const ButtonText = styled.Text`
   color: ${colors.primatyAccentColor};
-  font-size: 20px;
+  font-size: ${dimensions.textSize.title};
   line-height: 27px;
-  font-family: ${fonts.regular}
+  font-family: ${fonts.quicksand.medium}
 `
