@@ -13,7 +13,7 @@ export class CreateMyMeditations1603293040809 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'varchar(36)',
+            type: 'integer',
             isPrimary: true,
           },
           {
@@ -22,7 +22,7 @@ export class CreateMyMeditations1603293040809 implements MigrationInterface {
           },
           {
             name: 'id_meditation',
-            type: 'varchar(36)',
+            type: 'integer',
           },
         ],
       })

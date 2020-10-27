@@ -8,8 +8,10 @@ export class CreateMeditation1603291578253 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'varchar(36)',
+            type: 'integer',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'description',
