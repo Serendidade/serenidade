@@ -1,7 +1,6 @@
 import {
   Entity,
   Column,
-  TableForeignKey,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
@@ -13,6 +12,9 @@ class Meditation {
   id: string
 
   @Column()
+  description: string
+
+  @Column()
   type: string
 
   @Column()
@@ -20,9 +22,6 @@ class Meditation {
 
   @Column()
   path: string
-
-  @Column()
-  google_id?: string
 
   @CreateDateColumn()
   created_at: Date

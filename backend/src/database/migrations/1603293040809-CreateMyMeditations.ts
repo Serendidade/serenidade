@@ -12,6 +12,11 @@ export class CreateMyMeditations1603293040809 implements MigrationInterface {
         name: 'my_meditations',
         columns: [
           {
+            name: 'id',
+            type: 'varchar(36)',
+            isPrimary: true,
+          },
+          {
             name: 'id_user',
             type: 'varchar(36)',
           },
