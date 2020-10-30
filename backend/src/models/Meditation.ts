@@ -9,7 +9,7 @@ import {
 @Entity('meditations')
 class Meditation {
   @PrimaryGeneratedColumn()
-  id: string
+  id: NumberConstructor
 
   @Column()
   description: string
