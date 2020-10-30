@@ -2,6 +2,7 @@ import { Router } from 'express'
 import CreateMeditationService from '../services/CreateMeditationService'
 import ListMeditationService from '../services/ListMeditationService'
 import ShowMeditationService from '../services/ShowMeditationService'
+import UpdateMeditationService from '../services/UpdateMeditationService'
 const meditationsRoutes = Router()
 
 meditationsRoutes.post('/', async (req, res) => {
@@ -37,7 +38,14 @@ meditationsRoutes.get('/:id', async (req, res) => {
   return res.json(meditation)
 })
 
-meditationsRoutes.put('/:id', async (req, res) => {})
+meditationsRoutes.put('/:id', async (req, res) => {
+  const { id } = req.params
+  const updateMeditation = new UpdateMeditationService()
+
+  const updatedMeditation = await updateMeditation(id)
+
+  return res.json(updateMeditation)
+})
 
 meditationsRoutes.delete('/:id', async (req, res) => {})
 
