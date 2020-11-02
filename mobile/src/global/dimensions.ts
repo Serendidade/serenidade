@@ -12,5 +12,6 @@ export default {
     text: `${widthPercentageToDP(6.1)}px`,
     width: `${widthPercentageToDP(100)}%`,
     height: `${widthPercentageToDP(15)}px`
-  }
+  },
+  image: widthPercentageToDP(80),
 }

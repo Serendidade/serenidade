@@ -6,8 +6,7 @@ import colors from '../../global/colors'
 export const Container = styled(RectButton)`
   width: 75px;
   height: 50px;
-  background: ${colors.primaryColor};
-  box-shadow: 16px 16px 16px rgba(0, 0, 0, 0.25);
+  background: ${colors.spectres.white[0]};
   border-radius: 5px;
 
   display: flex;

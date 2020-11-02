@@ -60,6 +60,9 @@ const SignIn: React.FC = () => {
         return
       }
 
+      if (user) {
+        navigation.navigate('Meditation')
+      }
       Alert.alert(
         'Erro na autenticação',
         'Ocorreu um erro ao fazer login, cheque as credenciais.'
