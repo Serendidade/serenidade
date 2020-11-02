@@ -5,43 +5,54 @@ import {
   TableForeignKey,
 } from 'typeorm'
 
-export class CreateMyMeditations1603293040809 implements MigrationInterface {
+export class CreateReflection1604011490599 implements MigrationInterface {
+  name = 'CreateReflection1604011490599'
+
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'my_meditations',
+        name: 'reflections',
         columns: [
           {
             name: 'id',
             type: 'integer',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
+          },
+          {
+            name: 'content',
+            type: 'varchar',
           },
           {
             name: 'id_user',
             type: 'varchar(36)',
           },
           {
-            name: 'id_meditation',
-            type: 'integer',
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
+          },
+          {
+            name: 'updated_at',
+            type: 'timestamp',
+            default: 'now()',
           },
         ],
       })
     )
-    await queryRunner.createForeignKeys('my_meditations', [
+
+    await queryRunner.createForeignKey(
+      'reflections',
       new TableForeignKey({
         columnNames: ['id_user'],
         referencedTableName: 'users',
         referencedColumnNames: ['id'],
-      }),
-      new TableForeignKey({
-        columnNames: ['id_meditation'],
-        referencedTableName: 'meditations',
-        referencedColumnNames: ['id'],
-      }),
-    ])
+      })
+    )
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('my_meditations')
+    await queryRunner.dropTable('reflections')
   }
 }

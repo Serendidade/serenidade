@@ -4,24 +4,21 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm'
 
-@Entity('meditations')
-class Meditation {
+import User from './User'
+
+@Entity('refletions')
+class Reflection {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
-  description: string
+  content: string
 
-  @Column()
-  type: string
-
-  @Column()
-  guide: string
-
-  @Column()
-  path: string
+  @ManyToOne(() => User, user => user.id)
+  id_user: User
 
   @CreateDateColumn()
   created_at: Date
@@ -30,4 +27,4 @@ class Meditation {
   updated_at: Date
 }
 
-export default Meditation
+export default Reflection
