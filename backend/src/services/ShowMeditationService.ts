@@ -1,9 +1,8 @@
-import { NumberAttributeValue } from 'aws-sdk/clients/dynamodb'
 import { getRepository } from 'typeorm'
 import Meditation from '../models/Meditation'
 
 class ShowMeditationService {
-  public async execute(id: NumberAttributeValue): Promise<Meditation> {
+  public async execute(id: number): Promise<Meditation> {
     const meditationsRepository = getRepository(Meditation)
 
     const meditation = await meditationsRepository.findOneOrFail({

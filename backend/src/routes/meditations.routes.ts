@@ -1,8 +1,10 @@
 import { Router } from 'express'
 import CreateMeditationService from '../services/CreateMeditationService'
+import DeleteMeditationService from '../services/DeleteMeditationService'
 import ListMeditationService from '../services/ListMeditationService'
 import ShowMeditationService from '../services/ShowMeditationService'
 import UpdateMeditationService from '../services/UpdateMeditationService'
+
 const meditationsRoutes = Router()
 
 meditationsRoutes.post('/', async (req, res) => {
@@ -33,20 +35,27 @@ meditationsRoutes.get('/:id', async (req, res) => {
 
   const showMeditation = new ShowMeditationService()
 
-  const meditation = await showMeditation.execute(id)
+  const meditation = await showMeditation.execute(Number(id))
 
   return res.json(meditation)
 })
 
 meditationsRoutes.put('/:id', async (req, res) => {
   const { id } = req.params
+
   const updateMeditation = new UpdateMeditationService()
+  const updatedMeditation = await updateMeditation.execute(req.body, id)
 
-  const updatedMeditation = await updateMeditation(id)
-
-  return res.json(updateMeditation)
+  return res.json(updatedMeditation)
 })
 
-meditationsRoutes.delete('/:id', async (req, res) => {})
+meditationsRoutes.delete('/:id', async (req, res) => {
+  const { id } = req.params
+
+  const deleteMeditation = new DeleteMeditationService()
+  const deletionMessage = await deleteMeditation.execute(id)
+
+  return res.json(deletionMessage)
+})
 
 export default meditationsRoutes
