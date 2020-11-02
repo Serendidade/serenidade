@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { View } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 import { GoogleSignin } from '@react-native-community/google-signin'
 import { GOOGLE_WEBCLIENT_ID } from '@env'
+import { useAuth } from '../../hooks/auth'
 
 import colors from '../../global/colors'
 import dimensions from '../../global/dimensions'
@@ -10,10 +11,17 @@ import { Container, Title, Button, ButtonText, ButtonContainer, ButtonIcon } fro
 
 const Welcome: React.FC = () => {
   const navigation = useNavigation()
+  const { signIn, user } = useAuth()
 
   useEffect(() => {
     GoogleSignin.configure({ webClientId: GOOGLE_WEBCLIENT_ID })
   }, [])
+
+  const handleSignIn = useCallback(async () => {
+    if (user) {
+      navigation.navigate('Meditation')
+    }
+  }, [signIn])
 
   return (
     <View style={{
@@ -26,7 +34,7 @@ const Welcome: React.FC = () => {
 
         <ButtonContainer >
           <ButtonIcon name="login" size={dimensions.icon} onPress={() => navigation.navigate('SignIn')}/>
-          <Button onPress={() => navigation.navigate('SignIn')}>
+          <Button onPress={() => handleSignIn()}>
             <ButtonText>Quero acessar</ButtonText>
           </Button>
         </ButtonContainer>
