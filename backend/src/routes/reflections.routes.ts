@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import CreateReflectionService from '../services/CreateReflectionService'
 import UpdateReflectionService from '../services/UpdateReflectionService'
+import ListReflectionService from '../services/ListReflectionService'
 
 const reflectionsRoutes = Router()
 
@@ -27,6 +28,14 @@ reflectionsRoutes.put('/:id', async (req, res) => {
   })
 
   return res.json(reflection)
+})
+
+reflectionsRoutes.get('/', async (req, res) => {
+  const listReflection = new ListReflectionService()
+
+  const reflections = await listReflection.execute()
+
+  return res.json(reflections)
 })
 
 export default reflectionsRoutes
