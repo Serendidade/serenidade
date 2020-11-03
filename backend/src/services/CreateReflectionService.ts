@@ -4,15 +4,15 @@ import Reflection from '../models/Reflection'
 
 interface Request {
   content: string
-  id_user: string
+  user_id: string
 }
 
 class CreateReflectionService {
-  public async execute({ content, id_user }: Request): Promise<Reflection> {
+  public async execute({ content, user_id }: Request): Promise<Reflection> {
     const reflectionsRepository = getRepository(Reflection)
 
     const reflection = reflectionsRepository.create({
-      user: id_user,
+      user: user_id,
       content,
     })
 
