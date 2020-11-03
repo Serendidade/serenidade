@@ -2,11 +2,12 @@ import {
   MigrationInterface,
   QueryRunner,
   Table,
+  TableColumn,
   TableForeignKey,
 } from 'typeorm'
 
-export class CreateReflection1604011490599 implements MigrationInterface {
-  name = 'CreateReflection1604011490599'
+export class CreateReflection1604361671755 implements MigrationInterface {
+  name = 'CreateReflection1604361671755'
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
@@ -25,10 +26,6 @@ export class CreateReflection1604011490599 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'id_user',
-            type: 'varchar(36)',
-          },
-          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -42,12 +39,20 @@ export class CreateReflection1604011490599 implements MigrationInterface {
       })
     )
 
+    await queryRunner.addColumn(
+      'reflections',
+      new TableColumn({
+        name: 'userId',
+        type: 'varchar(36)',
+      })
+    )
+
     await queryRunner.createForeignKey(
       'reflections',
       new TableForeignKey({
-        columnNames: ['id_user'],
-        referencedTableName: 'users',
+        columnNames: ['userId'],
         referencedColumnNames: ['id'],
+        referencedTableName: 'users',
       })
     )
   }

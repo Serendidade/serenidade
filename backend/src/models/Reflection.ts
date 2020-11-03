@@ -9,7 +9,7 @@ import {
 
 import User from './User'
 
-@Entity('refletions')
+@Entity('reflections')
 class Reflection {
   @PrimaryGeneratedColumn()
   id: number
@@ -18,7 +18,7 @@ class Reflection {
   content: string
 
   @ManyToOne(() => User, user => user.id)
-  id_user: User
+  user: string
 
   @CreateDateColumn()
   created_at: Date

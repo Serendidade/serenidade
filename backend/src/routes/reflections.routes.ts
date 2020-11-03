@@ -1,14 +1,16 @@
 import { Router } from 'express'
+import CreateReflectionService from '../services/CreateReflectionService'
 
 const reflectionsRoutes = Router()
 
 reflectionsRoutes.post('/', async (req, res) => {
-  return res.send({ ok: true })
-})
+  const { content, id_user } = req.body
 
-reflectionsRoutes.get('/', async (req, res) => {})
-reflectionsRoutes.get('/:id', async (req, res) => {})
-reflectionsRoutes.put('/:id', async (req, res) => {})
-reflectionsRoutes.delete('/:id', async (req, res) => {})
+  const createReflecion = new CreateReflectionService()
+
+  const reflection = await createReflecion.execute({ content, id_user })
+
+  return res.json(reflection)
+})
 
 export default reflectionsRoutes
