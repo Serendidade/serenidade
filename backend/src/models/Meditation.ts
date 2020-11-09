@@ -5,22 +5,26 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import {} from 'class-validator'
+import { IsNotEmpty } from 'class-validator'
 @Entity('meditations')
 class Meditation {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
+  @IsNotEmpty()
   description: string
 
   @Column()
+  @IsNotEmpty()
   type: string
 
   @Column()
+  @IsNotEmpty()
   guide: string
 
   @Column()
+  @IsNotEmpty()
   path: string
 
   @CreateDateColumn()

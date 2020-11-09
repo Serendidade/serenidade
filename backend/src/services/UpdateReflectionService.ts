@@ -19,6 +19,10 @@ class UpdateReflectionService {
     const reflectionsRepository = getRepository(Reflection)
     const usersRepository = getRepository(User)
 
+    if (!content) {
+      throw new AppError('Please type a content do be updated')
+    }
+
     const userFound = await usersRepository.findOne({ id: user_id })
 
     if (!userFound) {

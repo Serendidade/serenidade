@@ -3,6 +3,7 @@ import CreateReflectionService from '../services/CreateReflectionService'
 import UpdateReflectionService from '../services/UpdateReflectionService'
 import ListReflectionService from '../services/ListReflectionService'
 import DeleteReflectionService from '../services/DeleteReflectionService'
+import ShowReflectionService from '../services/ShowReflectionService'
 
 const reflectionsRoutes = Router()
 
@@ -27,6 +28,16 @@ reflectionsRoutes.put('/:id', async (req, res) => {
     reflection_id: id,
     user_id,
   })
+
+  return res.json(reflection)
+})
+
+reflectionsRoutes.get('/:id', async (req, res) => {
+  const { id } = req.params
+
+  const showReflection = new ShowReflectionService()
+
+  const reflection = await showReflection.execute(Number(id))
 
   return res.json(reflection)
 })

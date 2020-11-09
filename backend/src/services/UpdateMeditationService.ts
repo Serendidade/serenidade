@@ -36,6 +36,12 @@ class UpdateMeditationService {
       key => request[key] === undefined && delete request[key]
     )
 
+    const errors = await validate(request)
+
+    if (errors.length > 0) {
+      throw new AppError(`${errors}`)
+    }
+
     await createQueryBuilder()
       .update(Meditation)
       .set(request)
