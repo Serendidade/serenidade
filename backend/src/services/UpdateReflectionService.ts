@@ -1,6 +1,8 @@
 import { getRepository, createQueryBuilder } from 'typeorm'
 import AppError from '../errors/Error'
+
 import Reflection from '../models/Reflection'
+import User from '../models/User'
 
 interface Request {
   content: string
@@ -15,16 +17,27 @@ class UpdateReflectionService {
     user_id,
   }: Request): Promise<Reflection> {
     const reflectionsRepository = getRepository(Reflection)
-    console.log(reflection_id)
+    const usersRepository = getRepository(User)
+
+    const userFound = await usersRepository.findOne({ id: user_id })
+
+    if (!userFound) {
+      throw new AppError('User not found')
+    }
+
+    const reflection = await reflectionsRepository.findOne({
+      where: { id: reflection_id, user: user_id },
+    })
+
+    if (!reflection) {
+      throw new AppError('Reflection not found')
+    }
+
     await createQueryBuilder()
       .update(Reflection)
       .set({ content })
       .where('id = :id', { id: reflection_id })
       .execute()
-
-    const reflection = await reflectionsRepository.findOneOrFail({
-      where: `id = ${reflection_id}`,
-    })
 
     return reflection
   }

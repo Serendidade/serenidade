@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm'
-
+import {} from 'class-validator'
 @Entity('meditations')
 class Meditation {
   @PrimaryGeneratedColumn()

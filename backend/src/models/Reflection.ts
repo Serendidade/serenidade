@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
+import { IsNotEmpty } from 'class-validator'
 
 import User from './User'
 
@@ -14,6 +15,7 @@ class Reflection {
   @PrimaryGeneratedColumn()
   id: number
 
+  @IsNotEmpty()
   @Column()
   content: string
 
