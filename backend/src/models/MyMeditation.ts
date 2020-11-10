@@ -1,19 +1,17 @@
-import { Entity, OneToOne, OneToMany, PrimaryColumn, JoinColumn } from 'typeorm'
-
+import { Entity, PrimaryColumn, JoinColumn, ManyToOne } from 'typeorm'
 import Meditation from './Meditation'
 import User from './User'
 
-@Entity('my_meditation')
+@Entity('my_meditations')
 class MyMeditation {
   @PrimaryColumn()
   id: string
 
-  @OneToOne(() => User, user => user.id)
-  @JoinColumn()
-  id_user: User
+  @ManyToOne(() => User, user => user.id)
+  user: string
 
-  @OneToMany(() => Meditation, meditation => meditation.id)
-  id_metitations: Meditation[]
+  @ManyToOne(() => Meditation, meditation => meditation.id)
+  meditation: number
 }
 
 export default MyMeditation

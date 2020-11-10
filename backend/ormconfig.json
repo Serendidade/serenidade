@@ -5,7 +5,7 @@
   "port": 3308,
   "username": "root",
   "password": "root",
-  "database": "test",
+  "database": "testdb",
   "entities": [
     "./src/models/*.ts"
   ],

@@ -15,13 +15,15 @@ export class CreateMyMeditations1603293040809 implements MigrationInterface {
             name: 'id',
             type: 'integer',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
-            name: 'id_user',
+            name: 'userId',
             type: 'varchar(36)',
           },
           {
-            name: 'id_meditation',
+            name: 'meditationId',
             type: 'integer',
           },
         ],
@@ -29,12 +31,12 @@ export class CreateMyMeditations1603293040809 implements MigrationInterface {
     )
     await queryRunner.createForeignKeys('my_meditations', [
       new TableForeignKey({
-        columnNames: ['id_user'],
+        columnNames: ['userId'],
         referencedTableName: 'users',
         referencedColumnNames: ['id'],
       }),
       new TableForeignKey({
-        columnNames: ['id_meditation'],
+        columnNames: ['meditationId'],
         referencedTableName: 'meditations',
         referencedColumnNames: ['id'],
       }),
