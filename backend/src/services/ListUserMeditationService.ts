@@ -1,7 +1,8 @@
 import MyMeditation from '../models/MyMeditation'
 import Meditation from '../models/Meditation'
 import AppError from '../errors/Error'
-import { createQueryBuilder, getRepository } from 'typeorm'
+import ListMeditationService from '../services/ListMeditationService'
+import { getManager } from 'typeorm'
 
 interface Request {
   user_id: string
@@ -9,20 +10,18 @@ interface Request {
 
 class ListUserMeditationService {
   public async execute({ user_id }: Request): Promise<Meditation[]> {
-    const usersMeditationRepository = getRepository(MyMeditation)
-    const c = getRepository(Meditation)
+    const listMeditation = new ListMeditationService()
+    const meditation = await listMeditation.execute()
+    const entityManager = getManager()
 
-    const d = await c.find()
-    const med = await createQueryBuilder('meditations')
-      .leftJoinAndSelect('meditations.id', 'meditations')
-      .where('user.id = :id', { id: user_id })
-      .getMany()
+    const userm = await entityManager.query(
+      ` SELECT meditations.*
+        FROM meditations, my_meditations, users
+        WHERE my_meditations.userId = users.id
+        AND my_meditations.meditationId = meditations.id`
+    )
 
-    console.log(med)
-    if (!med) {
-      throw new AppError('deus pai me ajuda')
-    }
-    return d
+    return userm
   }
 }
 

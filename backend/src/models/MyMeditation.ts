@@ -8,9 +8,11 @@ class MyMeditation {
   id: string
 
   @ManyToOne(() => User, user => user.id)
+  @JoinColumn({ name: 'id_user' })
   user: string
 
   @ManyToOne(() => Meditation, meditation => meditation.id)
+  @JoinColumn({ name: 'id_meditation' })
   meditation: number
 }
 
