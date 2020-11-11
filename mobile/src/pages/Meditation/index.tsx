@@ -1,11 +1,70 @@
 import React from 'react'
-import { View, Text } from 'react-native'
 
-// import { Container } from './styles';
+import { Image } from 'react-native'
+import {
+  HeaderContainer, HeaderIcon, HeaderTitle, MeditationsList, Container, MeditationItem,
+  MeditationText, MeditationContainer, MeditationTitle, MeditationIcon
+} from './styles'
+import dimensions from '../../global/dimensions'
+import MeditationImage from '../../assets/img_sitted.png'
+import { player, play } from '../../services/player'
+export interface DataInterface {
+  id: string
+  title: string
+}
 
-const Meditation: React.FC = () => {
+const Meditation: React.FC = ({ navigation }) => {
+  const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      title: 'First Item',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      title: 'Second Item',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      title: 'Third Item',
+    },
+  ]
+
   return (
-    <Text>ROI</Text>
+    <>
+      <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
+        <HeaderIcon name="menu" size={dimensions.icon} onPress={() => { navigation.openDrawer() }}/>
+        <HeaderTitle>Minhas Meditações</HeaderTitle>
+      </HeaderContainer>
+
+      <Container>
+        <MeditationsList
+          keyExtractor={(data) => data.id}
+          data={DATA}
+          renderItem={({ item }) =>
+            <MeditationItem>
+              <Image source={MeditationImage} style={{ width: 70, height: 140 }}/>
+              <MeditationContainer>
+                <MeditationTitle ellipsizeMode="middle" numberOfLines={1}>
+                  {item.id}
+                </MeditationTitle>
+                <MeditationText>{item.title}</MeditationText>
+              </MeditationContainer>
+              <MeditationIcon name="chevron-right" size={dimensions.icon} onPress={() => {
+                player()
+                play({
+                  id: item.id,
+                  url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+                  title: item.title,
+                  artist: item.id,
+                  artwork: 'https://img.ibxk.com.br/2019/07/09/09115359225032.jpg?w=1120&h=420&mode=crop&scale=both',
+                })
+              }}/>
+            </MeditationItem>
+          }
+        />
+      </Container>
+
+    </>
   )
 }
 
