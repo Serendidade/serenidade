@@ -48,7 +48,11 @@ const SignIn: React.FC = () => {
       await signIn({
         email: data.email,
         password: data.password,
-      })
+      }).then((user) => user != null ? navigation.navigate('Meditation') : null)
+
+      if (user) {
+        navigation.navigate('Meditation')
+      }
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err)
@@ -60,9 +64,6 @@ const SignIn: React.FC = () => {
         return
       }
 
-      if (user) {
-        navigation.navigate('Meditation')
-      }
       Alert.alert(
         'Erro na autenticação',
         'Ocorreu um erro ao fazer login, cheque as credenciais.'

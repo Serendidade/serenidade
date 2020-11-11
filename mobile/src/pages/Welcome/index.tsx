@@ -20,6 +20,8 @@ const Welcome: React.FC = () => {
   const handleSignIn = useCallback(async () => {
     if (user) {
       navigation.navigate('Meditation')
+    } else {
+      navigation.navigate('SignIn')
     }
   }, [signIn])
 
