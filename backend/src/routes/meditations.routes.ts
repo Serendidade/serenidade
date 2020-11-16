@@ -42,7 +42,6 @@ meditationsRoutes.get('/:id', async (req, res) => {
 
 meditationsRoutes.put('/:id', async (req, res) => {
   const { id } = req.params
-
   const updateMeditation = new UpdateMeditationService()
   const updatedMeditation = await updateMeditation.execute(req.body, id)
 
