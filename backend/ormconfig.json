@@ -2,10 +2,10 @@
   "type": "mysql",
   "host": "localhost",
 
-  "port": 3308,
+  "port": 3306,
   "username": "root",
-  "password": "root",
-  "database": "test",
+  "password": "docker",
+  "database": "serenidade",
   "entities": [
     "./src/models/*.ts"
   ],
@@ -16,3 +16,4 @@
     "migrationsDir": "./src/database/migrations"
   }
 }
+

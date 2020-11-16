@@ -3,16 +3,16 @@ import * as Yup from 'yup'
 import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
 import api from '../../services/api'
-import { useNavigation } from '@react-navigation/native'
 import { KeyboardAvoidingView, Platform, ScrollView, TextInput, Alert } from 'react-native'
 
+import Header from '../../components/Header'
 import Button from '../../components/Button'
 import GoogleButton from '../../components/GoogleButton'
 import Input from '../../components/Input'
 import getValidationErrors from '../../utils/getValidationError'
-import dimensions from '../../global/dimensions'
-import { Container, Label, SubContainer, HeaderContainer, HeaderTitle, HeaderIcon } from './styles'
+import { Container, Label, SubContainer } from './styles'
 import { GoogleSignin, statusCodes, User as GoogleUser } from '@react-native-community/google-signin'
+import { useNavigation } from '@react-navigation/native'
 
 interface SignUpFormData {
   name: string
@@ -25,11 +25,10 @@ interface SignUpGoogleData extends SignUpFormData {
 }
 
 const SignUp: React.FC = () => {
+  const navigation = useNavigation()
   const formRef = useRef<FormHandles>(null)
   const passwordInputRef = useRef<TextInput>(null)
   const emailInputRef = useRef<TextInput>(null)
-
-  const navigation = useNavigation()
 
   const handleSignUp = useCallback(async (data: SignUpFormData) => {
     try {
@@ -128,10 +127,7 @@ const SignUp: React.FC = () => {
 
   return (
     <>
-      <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
-        <HeaderIcon name="arrow-left" size={dimensions.icon} onPress={() => { navigation.goBack() }}/>
-        <HeaderTitle>Criar minha conta</HeaderTitle>
-      </HeaderContainer>
+      <Header headerTitle="Criar minha conta" headerIcon="arrow-left" execute={() => { navigation.goBack() }}/>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}

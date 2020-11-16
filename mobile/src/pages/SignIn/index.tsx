@@ -9,11 +9,11 @@ import { useAuth } from '../../hooks/auth'
 import Button from '../../components/Button'
 import GoogleButton from '../../components/GoogleButton'
 import Input from '../../components/Input'
+import Header from '../../components/Header'
 // import { Svg, Path } from 'react-native-svg'
 import getValidationErrors from '../../utils/getValidationError'
 
-import { Container, Title, Label, SubContainer, HeaderContainer, HeaderTitle, HeaderIcon, RegisterContainer, RegisterButton, RegisterButtonText } from './styles'
-import dimensions from '../../global/dimensions'
+import { Container, Title, Label, SubContainer, RegisterContainer, RegisterButton, RegisterButtonText } from './styles'
 
 interface SignInFormData {
   email: string
@@ -69,14 +69,11 @@ const SignIn: React.FC = () => {
         'Ocorreu um erro ao fazer login, cheque as credenciais.'
       )
     }
-  }, [signIn])
+  }, [signIn, navigation, user])
 
   return (
     <>
-      <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
-        <HeaderIcon name="arrow-left" size={dimensions.icon} onPress={() => { navigation.goBack() }}/>
-        <HeaderTitle>Acessar minha conta</HeaderTitle>
-      </HeaderContainer>
+      <Header headerTitle="Acessar minha conta" headerIcon="arrow-left" execute={() => { navigation.goBack() }} />
       <KeyboardAvoidingView
         style={{ flex: 1, }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}

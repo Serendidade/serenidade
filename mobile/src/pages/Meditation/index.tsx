@@ -2,10 +2,11 @@ import React from 'react'
 
 import { Image } from 'react-native'
 import {
-  HeaderContainer, HeaderIcon, HeaderTitle, MeditationsList, Container, MeditationItem,
+  MeditationsList, Container, MeditationItem,
   MeditationText, MeditationContainer, MeditationTitle, MeditationIcon
 } from './styles'
 import dimensions from '../../global/dimensions'
+import Header from '../../components/Header'
 import MeditationImage from '../../assets/img_sitted.png'
 import { player, play } from '../../services/player'
 export interface DataInterface {
@@ -31,11 +32,7 @@ const Meditation: React.FC = ({ navigation }) => {
 
   return (
     <>
-      <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
-        <HeaderIcon name="menu" size={dimensions.icon} onPress={() => { navigation.openDrawer() }}/>
-        <HeaderTitle>Minhas Meditações</HeaderTitle>
-      </HeaderContainer>
-
+      <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.openDrawer()}/>
       <Container>
         <MeditationsList
           keyExtractor={(data) => data.id}

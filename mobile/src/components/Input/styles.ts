@@ -3,7 +3,6 @@ import colors from '../../global/colors'
 import fonts from '../../global/fonts'
 import dimensions from '../../global/dimensions'
 
-
 interface InputProps {
   isFocused: boolean
   isErrored: boolean

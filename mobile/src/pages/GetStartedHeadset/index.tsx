@@ -1,20 +1,19 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { HeaderContainer, HeaderTitle, Container, Phrase } from './styles'
+import { Container, Phrase } from './styles'
 import { ScrollView, Image } from 'react-native'
 
 import ImgHeadset from '../../assets/img_headset.png'
 import dimensions from '../../global/dimensions'
 import Button from '../../components/Button'
+import Header from '../../components/Header'
 
 const GetStartedHeadset: React.FC = () => {
   const navigation = useNavigation()
 
   return (
     <>
-      <HeaderContainer style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 3.84, elevation: 8 }}>
-        <HeaderTitle>Trilhando a felicidade</HeaderTitle>
-      </HeaderContainer>
+      <Header headerTitle="Trilhando a felicidade" />
 
       <ScrollView keyboardShouldPersistTaps="handled">
         <Container>
