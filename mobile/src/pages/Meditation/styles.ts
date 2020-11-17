@@ -51,5 +51,5 @@ export const MeditationTitle = styled.Text`
 
 export const MeditationIcon = styled(Icon)`
  color: ${colors.spectres.green[0]};
- padding-left: 5px;
+ padding-left: 2px;
 `

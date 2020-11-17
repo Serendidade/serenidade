@@ -1,14 +1,18 @@
 import React from 'react'
 
 import { Image } from 'react-native'
+import api from '../../services/api'
+import { player, play } from '../../services/player'
+
 import {
   MeditationsList, Container, MeditationItem,
   MeditationText, MeditationContainer, MeditationTitle, MeditationIcon
 } from './styles'
+
 import dimensions from '../../global/dimensions'
+import Card from '../../components/Card'
 import Header from '../../components/Header'
 import MeditationImage from '../../assets/img_sitted.png'
-import { player, play } from '../../services/player'
 export interface DataInterface {
   id: string
   title: string
@@ -39,13 +43,7 @@ const Meditation: React.FC = ({ navigation }) => {
           data={DATA}
           renderItem={({ item }) =>
             <MeditationItem>
-              <Image source={MeditationImage} style={{ width: 70, height: 140 }}/>
-              <MeditationContainer>
-                <MeditationTitle ellipsizeMode="middle" numberOfLines={1}>
-                  {item.id}
-                </MeditationTitle>
-                <MeditationText>{item.title}</MeditationText>
-              </MeditationContainer>
+              <Card title={item.id} text={item.title}/>
               <MeditationIcon name="chevron-right" size={dimensions.icon} onPress={() => {
                 player()
                 play({

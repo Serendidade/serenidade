@@ -1,16 +1,10 @@
 {
   "type": "mysql",
   "host": "localhost",
-
-  "port": 3306,
+  "port": 3308,
   "username": "root",
-<<<<<<< HEAD
-  "password": "docker",
-  "database": "serenidade",
-=======
   "password": "root",
   "database": "testdb",
->>>>>>> 4461296fff99f0eaf053148a3f56fd9d06799525
   "entities": [
     "./src/models/*.ts"
   ],
