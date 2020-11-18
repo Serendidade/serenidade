@@ -25,7 +25,7 @@ class UpdateMeditationService {
     /*
       meti um any, se ver isso tenta mudar o tipo do objeto e corrigir a linha de remoção de propriedade undefined, eh nois
     */
-    const request: any = {
+    const request: Request | any = {
       description: description,
       path: path,
       guide: guide,

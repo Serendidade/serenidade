@@ -23,9 +23,10 @@ meditationsRoutes.post('/', async (req, res) => {
 })
 
 meditationsRoutes.get('/', async (req, res) => {
+  const { q = '' } = req.query
   const listMeditation = new ListMeditationService()
 
-  const meditations = await listMeditation.execute()
+  const meditations = await listMeditation.execute(String(q))
 
   return res.json(meditations)
 })

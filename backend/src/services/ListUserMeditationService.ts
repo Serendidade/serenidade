@@ -1,4 +1,3 @@
-import MyMeditation from '../models/MyMeditation'
 import Meditation from '../models/Meditation'
 import AppError from '../errors/Error'
 import ListMeditationService from '../services/Meditations/ListMeditationService'
