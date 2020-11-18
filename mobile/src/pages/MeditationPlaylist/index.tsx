@@ -11,6 +11,7 @@ export interface DataInterface {
   type: string
   path: string
   description: string
+  guide: string
 
 }
 
