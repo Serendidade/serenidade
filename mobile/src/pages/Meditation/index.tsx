@@ -1,24 +1,40 @@
-import React from 'react'
-
-import { Image } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Alert } from 'react-native'
 import api from '../../services/api'
-import { player, play } from '../../services/player'
 
 import {
   MeditationsList, Container, MeditationItem,
-  MeditationText, MeditationContainer, MeditationTitle, MeditationIcon
 } from './styles'
 
-import dimensions from '../../global/dimensions'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
-import MeditationImage from '../../assets/img_sitted.png'
+
 export interface DataInterface {
-  id: string
+  id: number
   title: string
+  type: string
+  path: string
+  description: string
+
 }
 
-const Meditation: React.FC = ({ navigation }) => {
+const Meditation: React.FC = ({ navigation, route }) => {
+  const [meditations, setMeditations] = useState<DataInterface[]>([])
+
+  useEffect(() => {
+    async function loadMeditations ():Promise<void> {
+      try {
+        const res = await api.get(`/meditations?q=${route.params.type}`)
+        const { data } = res
+        setMeditations(data)
+      } catch (error) {
+        Alert.alert(error)
+      }
+    }
+
+    loadMeditations()
+  }, [])
+
   const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -36,24 +52,14 @@ const Meditation: React.FC = ({ navigation }) => {
 
   return (
     <>
-      <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.openDrawer()}/>
+      <Header headerTitle="Caminho da Paz" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
       <Container>
         <MeditationsList
           keyExtractor={(data) => data.id}
           data={DATA}
           renderItem={({ item }) =>
             <MeditationItem>
-              <Card title={item.id} text={item.title}/>
-              <MeditationIcon name="chevron-right" size={dimensions.icon} onPress={() => {
-                player()
-                play({
-                  id: item.id,
-                  url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-                  title: item.title,
-                  artist: item.id,
-                  artwork: 'https://img.ibxk.com.br/2019/07/09/09115359225032.jpg?w=1120&h=420&mode=crop&scale=both',
-                })
-              }}/>
+              <Card title={item.id} text={item.title} isPlaylistCard={false} execute={() => navigation.navigate('MeditationPlayer')}/>
             </MeditationItem>
           }
         />

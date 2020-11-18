@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm'
-import Meditation from '../models/Meditation'
+import Meditation from '../../models/Meditation'
 
 class ListMeditationService {
   public async execute(): Promise<Meditation[]> {

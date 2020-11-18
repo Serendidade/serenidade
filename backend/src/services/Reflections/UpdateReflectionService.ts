@@ -1,8 +1,8 @@
 import { getRepository, createQueryBuilder } from 'typeorm'
-import AppError from '../errors/Error'
+import AppError from '../../errors/Error'
 
-import Reflection from '../models/Reflection'
-import User from '../models/User'
+import Reflection from '../../models/Reflection'
+import User from '../../models/User'
 
 interface Request {
   content: string

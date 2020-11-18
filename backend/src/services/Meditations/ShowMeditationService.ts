@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm'
-import Meditation from '../models/Meditation'
-import AppError from '../errors/Error'
+import AppError from '../../errors/Error'
+import Meditation from '../../models/Meditation'
 
 class ShowMeditationService {
   public async execute(id: number): Promise<Meditation> {
