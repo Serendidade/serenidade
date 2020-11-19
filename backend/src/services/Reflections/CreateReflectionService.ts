@@ -1,9 +1,9 @@
 import { getRepository } from 'typeorm'
 import { validate } from 'class-validator'
 
-import AppError from '../errors/Error'
-import Reflection from '../models/Reflection'
-import User from '../models/User'
+import AppError from '../../errors/Error'
+import Reflection from '../../models/Reflection'
+import User from '../../models/User'
 
 interface Request {
   content: string

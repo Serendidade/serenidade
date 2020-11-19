@@ -1,6 +1,6 @@
 import { createQueryBuilder, getRepository } from 'typeorm'
-import Reflection from '../models/Reflection'
-import AppError from '../errors/Error'
+import Reflection from '../../models/Reflection'
+import AppError from '../../errors/Error'
 
 interface Response {
   message: string

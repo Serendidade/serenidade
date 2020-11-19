@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm'
 import { validate } from 'class-validator'
-import AppError from '../errors/Error'
-import Meditation from '../models/Meditation'
+import AppError from '../../errors/Error'
+import Meditation from '../../models/Meditation'
 
 interface Request {
   description: string

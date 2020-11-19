@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm'
-import Reflection from '../models/Reflection'
-import AppError from '../errors/Error'
+import Reflection from '../../models/Reflection'
+import AppError from '../../errors/Error'
 
 class ShowReflectionService {
   public async execute(id: number): Promise<Reflection> {

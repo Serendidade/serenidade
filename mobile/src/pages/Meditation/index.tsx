@@ -1,63 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Alert } from 'react-native'
+import api from '../../services/api'
 
+<<<<<<< HEAD
 import { useNavigation } from '@react-navigation/native'
 import { Image } from 'react-native'
+=======
+>>>>>>> 760f71ebf0eebef5d8b0622e831716be11c4362b
 import {
   MeditationsList, Container, MeditationItem,
-  MeditationText, MeditationContainer, MeditationTitle, MeditationIcon
 } from './styles'
-import dimensions from '../../global/dimensions'
+
+import Card from '../../components/Card'
 import Header from '../../components/Header'
+<<<<<<< HEAD
 import MeditationImage from '../../assets/img_sitted.png'
 import { player, play } from '../../services/player'
 import { resetRoutes } from '../../utils/routing'
+=======
+
+>>>>>>> 760f71ebf0eebef5d8b0622e831716be11c4362b
 export interface DataInterface {
-  id: string
+  id: number
   title: string
+  type: string
+  path: string
+  description: string
+  guide: string
+
 }
 
-const Meditation: React.FC = ({ navigation }) => {
-  const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-  ]
+const Meditation: React.FC = ({ navigation, route }) => {
+  const [meditations, setMeditations] = useState<DataInterface[]>([])
+
+  useEffect(() => {
+    async function loadMeditations ():Promise<void> {
+      try {
+        const res = await api.get(`/meditations?q=${route.params.type}`)
+        const { data } = res
+        setMeditations(data)
+      } catch (error) {
+        Alert.alert(error)
+      }
+    }
+
+    loadMeditations()
+  }, [route.params.type])
 
   return (
     <>
-      <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.openDrawer()}/>
+      <Header headerTitle="Caminho da Paz" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
       <Container>
         <MeditationsList
-          keyExtractor={(data) => data.id}
-          data={DATA}
+          keyExtractor={(item) => String(item.id)}
+          data={meditations}
           renderItem={({ item }) =>
             <MeditationItem>
-              <Image source={MeditationImage} style={{ width: 70, height: 140 }}/>
-              <MeditationContainer>
-                <MeditationTitle ellipsizeMode="middle" numberOfLines={1}>
-                  {item.id}
-                </MeditationTitle>
-                <MeditationText>{item.title}</MeditationText>
-              </MeditationContainer>
-              <MeditationIcon name="chevron-right" size={dimensions.icon} onPress={() => {
-                player()
-                play({
-                  id: item.id,
-                  url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-                  title: item.title,
-                  artist: item.id,
-                  artwork: 'https://img.ibxk.com.br/2019/07/09/09115359225032.jpg?w=1120&h=420&mode=crop&scale=both',
-                })
-              }}/>
+              <Card title={item.guide} text={item.description} isPlaylistCard={false} execute={() => navigation.navigate('MeditationPlayer')}/>
             </MeditationItem>
           }
         />

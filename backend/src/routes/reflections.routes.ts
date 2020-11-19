@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import CreateReflectionService from '../services/CreateReflectionService'
-import UpdateReflectionService from '../services/UpdateReflectionService'
-import ListReflectionService from '../services/ListReflectionService'
-import DeleteReflectionService from '../services/DeleteReflectionService'
-import ShowReflectionService from '../services/ShowReflectionService'
+import CreateReflectionService from '../services/Reflections/CreateReflectionService'
+import UpdateReflectionService from '../services/Reflections/UpdateReflectionService'
+import ListReflectionService from '../services/Reflections/ListReflectionService'
+import DeleteReflectionService from '../services/Reflections/DeleteReflectionService'
+import ShowReflectionService from '../services/Reflections/ShowReflectionService'
 
 const reflectionsRoutes = Router()
 

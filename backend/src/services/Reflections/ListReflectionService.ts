@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm'
-import Reflection from '../models/Reflection'
+import Reflection from '../../models/Reflection'
 
 class ListReflectionService {
   public async execute(): Promise<Reflection[]> {

@@ -1,7 +1,6 @@
 import { createQueryBuilder, getRepository } from 'typeorm'
-import Meditation from '../models/Meditation'
-import AppError from '../errors/Error'
-
+import AppError from '../../errors/Error'
+import Meditation from '../../models/Meditation'
 interface Response {
   message: string
 }

@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import CreateMeditationService from '../services/CreateMeditationService'
-import DeleteMeditationService from '../services/DeleteMeditationService'
-import ListMeditationService from '../services/ListMeditationService'
-import ShowMeditationService from '../services/ShowMeditationService'
-import UpdateMeditationService from '../services/UpdateMeditationService'
+import CreateMeditationService from '../services/Meditations/CreateMeditationService'
+import DeleteMeditationService from '../services/Meditations/DeleteMeditationService'
+import ListMeditationService from '../services/Meditations/ListMeditationService'
+import ShowMeditationService from '../services/Meditations/ShowMeditationService'
+import UpdateMeditationService from '../services/Meditations/UpdateMeditationService'
 
 const meditationsRoutes = Router()
 
@@ -23,9 +23,10 @@ meditationsRoutes.post('/', async (req, res) => {
 })
 
 meditationsRoutes.get('/', async (req, res) => {
+  const { q = '' } = req.query
   const listMeditation = new ListMeditationService()
 
-  const meditations = await listMeditation.execute()
+  const meditations = await listMeditation.execute(String(q))
 
   return res.json(meditations)
 })
