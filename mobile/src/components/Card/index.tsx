@@ -16,7 +16,7 @@ const Card: React.FC<Cardas> = ({ title, text, isPlaylistCard, execute }:Cardas)
       {
         !isPlaylistCard ? (
           <>
-            <CardPlayIcon name="play-circle" size={dimensions.icon} onPress={() => execute ? execute() : null} />
+            <CardPlayIcon name="play-circle" size={60} onPress={() => execute ? execute() : null} />
             <CardContainer hasPlayButton>
               <CardTitle ellipsizeMode="middle" numberOfLines={1}>
                 {title}

@@ -48,7 +48,7 @@ const MeditationPlaylist: React.FC = ({ navigation }) => {
           data={meditations}
           renderItem={({ item }) =>
             <PlaylistItem>
-              <Card title={String(item.id)} text={item.type} isPlaylistCard execute={() => navigation.navigate('Meditation', { type: item.type, })}/>
+              <Card title={item.type} text={item.guide} isPlaylistCard execute={() => navigation.navigate('Meditation', { type: item.type, })}/>
             </PlaylistItem>
           }
         />
