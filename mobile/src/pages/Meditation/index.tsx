@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useNavigation } from '@react-navigation/native'
 import { Image } from 'react-native'
 import {
   MeditationsList, Container, MeditationItem,
@@ -9,6 +10,7 @@ import dimensions from '../../global/dimensions'
 import Header from '../../components/Header'
 import MeditationImage from '../../assets/img_sitted.png'
 import { player, play } from '../../services/player'
+import { resetRoutes } from '../../utils/routing'
 export interface DataInterface {
   id: string
   title: string
