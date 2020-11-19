@@ -2,8 +2,13 @@
   "type": "mysql",
   "host": "mysql.serenidade.kinghost.net",
   "port": 3306,
+<<<<<<< HEAD
+  "username": "root",
+  "password": "docker",
+=======
   "username": "serenidade",
   "password": "Serenidade2020",
+>>>>>>> 760f71ebf0eebef5d8b0622e831716be11c4362b
   "database": "serenidade",
   "entities": [
     "./src/models/*.ts"

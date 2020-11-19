@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Container, Phrase } from './styles'
 import { ScrollView, Image } from 'react-native'
@@ -8,7 +8,13 @@ import dimensions from '../../global/dimensions'
 import Button from '../../components/Button'
 import Header from '../../components/Header'
 
+import { setFirstAccess } from '../../utils/firstAccess'
+
 const GetStartedHeadset: React.FC = () => {
+  const checkFirstAccess = useCallback(async () => {
+    await setFirstAccess()
+  }, [])
+
   const navigation = useNavigation()
 
   return (
@@ -26,6 +32,7 @@ const GetStartedHeadset: React.FC = () => {
       <Container>
         <Button onPress={() => {
           navigation.navigate('Welcome')
+          checkFirstAccess()
         }}>
             Continuar
         </Button>

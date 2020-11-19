@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Container, Phrase } from './styles'
 import { ScrollView, Image } from 'react-native'
@@ -8,8 +8,20 @@ import dimensions from '../../global/dimensions'
 import Button from '../../components/Button'
 import Header from '../../components/Header'
 
+import { isFirstAccess } from '../../utils/firstAccess'
+import { resetRoutes } from '../../utils/routing'
+
 const GetStarted: React.FC = () => {
   const navigation = useNavigation()
+
+  const checkFirstAccess = useCallback(async () => {
+    const response = await isFirstAccess()
+    if (response) {
+      navigation.dispatch((state) => resetRoutes('Welcome', state))
+    }
+  }, [navigation])
+
+  checkFirstAccess()
 
   return (
     <>

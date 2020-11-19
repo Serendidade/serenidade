@@ -13,6 +13,7 @@ import MeditationPlayer from '../pages/MeditationPlayer'
 
 import fonts from '../global/fonts'
 import { View, ScrollView } from 'react-native'
+import { Container, Title } from './styles'
 
 const Auth = createStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -44,12 +45,17 @@ export const DrawerRoutes: React.FC = (props) => (
       keyboardDismissMode="on-drag"
       detachInactiveScreens={true}
       drawerContent={(props) =>
-        <View style={{ flex: 1, }}>
-          <ScrollView>
-            <DrawerItemList {...props} />
-            <DrawerItem label="Sair" onPress={() => {}} labelStyle={{ fontFamily: fonts.raleway.bold, fontSize: 20, alignSelf: 'auto' }}/>
-          </ScrollView>
-        </View>
+        <>
+          <Container>
+            <Title>Serenidade</Title>
+          </Container>
+          <View style={{ flex: 4 }}>
+            <ScrollView>
+              <DrawerItemList {...props} />
+              <DrawerItem label="Sair" onPress={() => {}} labelStyle={{ fontFamily: fonts.raleway.bold, fontSize: 20, alignSelf: 'auto' }}/>
+            </ScrollView>
+          </View>
+        </>
       }
       drawerContentOptions={{
         activeTintColor: '#7159ff',
@@ -60,10 +66,22 @@ export const DrawerRoutes: React.FC = (props) => (
       drawerStyle={{
         backgroundColor: '#f6f6f6',
         borderRadius: 5,
+<<<<<<< HEAD
+      }}>
+      <Drawer.Screen
+        name="Meditation"
+        component={Meditation}
+        options={{
+          title: 'Meditações',
+          gestureEnabled: true,
+          swipeEnabled: true,
+        }}/>
+=======
       }} >
       <Drawer.Screen name="MeditationPlayer" component={MeditationPlayer} />
       <Drawer.Screen name="Meditation" component={Meditation} options={{ title: 'Minhas Meditações', gestureEnabled: true, swipeEnabled: true }}/>
       <Drawer.Screen name="MeditationPlaylist" component={MeditationPlaylist} options={{ title: 'Playlist de Meditações', gestureEnabled: true, swipeEnabled: true }}/>
+>>>>>>> 760f71ebf0eebef5d8b0622e831716be11c4362b
     </Drawer.Navigator>
   </>
 )

@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react'
 import { Alert, Image, View } from 'react-native'
 import api from '../../services/api'
 
-import {
-  MeditationsList,
-  Container,
-  MeditationItem,
-  ChosenMeditationText,
-  ChosenPlaylistCard,
-  CardText,
-  CardTitle
-} from './styles'
+<<<<<<< HEAD
+import { useNavigation } from '@react-navigation/native'
+import { Image } from 'react-native'
+
+
 
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 
+import MeditationImage from '../../assets/img_sitted.png'
+import { player, play } from '../../services/player'
+import { resetRoutes } from '../../utils/routing'
+
+
+
 import image from '../../assets/lotus_flower_sit.png'
+
 export interface DataInterface {
   id: number
   title: string
