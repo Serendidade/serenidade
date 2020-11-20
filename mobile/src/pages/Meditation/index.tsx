@@ -24,6 +24,7 @@ import image from '../../assets/lotus_flower_sit.png'
   path: string
   description: string
   guide: string
+  duration: string
 }
 
 type MeditationParams = {
@@ -73,7 +74,7 @@ const Meditation: React.FC = () => {
             keyExtractor={(item) => String(item.id)}
             data={meditations}
             renderItem={({ item }) =>
-              <Card title={item.guide} text={item.description} isPlaylistCard={false} execute={() => {
+              <Card title={item.title} text={item.duration} isPlaylistCard={false} execute={() => {
                 navigation.navigate('MeditationPlayer', { item })
               }}/>
             }

@@ -4,14 +4,14 @@ import image from '../../assets/img_stretching.png'
 import dimensions from '../../global/dimensions'
 import { Image } from 'react-native'
 
-interface Cardas {
+interface CardData {
   title: string
   text: string
   isPlaylistCard: boolean
   execute?(): void
 }
 
-const Card: React.FC<Cardas> = ({ title, text, isPlaylistCard, execute }:Cardas) => {
+const Card: React.FC<CardData> = ({ title, text, isPlaylistCard, execute }:CardData) => {
   return (
     <CardItem>
       {

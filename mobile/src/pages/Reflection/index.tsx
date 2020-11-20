@@ -1,15 +1,16 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import Header from '../../components/Header'
-import { Container } from './styles'
+import { View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
-const Reflection: React.FC = ({ navigation }) => {
+import Header from '../../components/Header'
+import ReflectionCard from '../../components/ReflectionCard'
+
+const Reflection: React.FC = () => {
+  const navigation = useNavigation()
   return <>
-    <Header headerTitle="Reflexto" headerIcon="arrow-left" execute={navigation.goBack()}/>
+    <Header headerTitle="Reflexões" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
     <View>
-      <Text>
-       ayy
-      </Text>
+      <ReflectionCard/>
     </View>
   </>
 }
