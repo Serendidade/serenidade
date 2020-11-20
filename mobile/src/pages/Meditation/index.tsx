@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, Image, View } from 'react-native'
+import { Alert, Image, View, ActivityIndicator } from 'react-native'
 import api from '../../services/api'
 
 import Card from '../../components/Card'
@@ -27,6 +27,7 @@ export interface DataInterface {
 
 const Meditation: React.FC = ({ navigation, route }) => {
   const [meditations, setMeditations] = useState<DataInterface[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     async function loadMeditations ():Promise<void> {
@@ -34,6 +35,7 @@ const Meditation: React.FC = ({ navigation, route }) => {
         const res = await api.get(`/meditations?q=${route.params.type}`)
         const { data } = res
         setMeditations(data)
+        setLoading(false)
       } catch (error) {
         Alert.alert(error)
       }
@@ -43,32 +45,34 @@ const Meditation: React.FC = ({ navigation, route }) => {
   }, [route.params.type])
 
   return (
-    <>
-      <Header headerTitle="Caminho da Paz" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
-      <Container>
-        <ChosenMeditationText>
+    !loading
+      ? <>
+        <Header headerTitle="Caminho da Paz" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
+        <Container>
+          <ChosenMeditationText>
           Você escolheu a playlist
-        </ChosenMeditationText>
-        <ChosenPlaylistCard>
-          <Image source={image} style={{ width: 100, height: 100, top: 16 }}/>
-          <View style={{ flexDirection: 'column', top: 40, left: -8 }}>
-            <CardTitle>{route.params.type}</CardTitle>
-            <CardText>{meditations.length} Sessões</CardText>
-          </View>
-        </ChosenPlaylistCard>
-        <ChosenMeditationText>
+          </ChosenMeditationText>
+          <ChosenPlaylistCard>
+            <Image source={image} style={{ width: 100, height: 100, top: 16 }}/>
+            <View style={{ flexDirection: 'column', top: 40, left: -8 }}>
+              <CardTitle>{route.params.type}</CardTitle>
+              <CardText>{meditations.length} Sessões</CardText>
+            </View>
+          </ChosenPlaylistCard>
+          <ChosenMeditationText>
           Sessões
-        </ChosenMeditationText>
-        <MeditationsList
-          keyExtractor={(item) => String(item.id)}
-          data={meditations}
-          renderItem={({ item }) =>
-            <Card title={item.type} text="5 min" isPlaylistCard={false} execute={() => navigation.navigate('MeditationPlayer')}/>
-          }
-        />
-      </Container>
+          </ChosenMeditationText>
+          <MeditationsList
+            keyExtractor={(item) => String(item.id)}
+            data={meditations}
+            renderItem={({ item }) =>
+              <Card title={item.type} text="5 min" isPlaylistCard={false} execute={() => navigation.navigate('MeditationPlayer')}/>
+            }
+          />
+        </Container>
 
-    </>
+      </>
+      : <ActivityIndicator/>
   )
 }
 

@@ -21,6 +21,14 @@ class Meditation {
 
   @Column()
   @IsNotEmpty()
+  title: string
+
+  @Column()
+  @IsNotEmpty()
+  duration: number
+
+  @Column()
+  @IsNotEmpty()
   guide: string
 
   @Column()

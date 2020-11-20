@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from 'react'
-import { Alert } from 'react-native'
+import { ActivityIndicator, Alert } from 'react-native'
 import { Container, Playlist, PlaylistItem } from './styles'
 import Header from '../../components/Header'
 import Card from '../../components/Card'
@@ -23,6 +23,7 @@ function parseMeditations (arr:DataInterface[]):DataInterface[] {
 
 const MeditationPlaylist: React.FC = ({ navigation }) => {
   const [meditations, setMeditations] = useState<DataInterface[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     async function loadMeditations ():Promise<void> {
@@ -31,6 +32,7 @@ const MeditationPlaylist: React.FC = ({ navigation }) => {
         const { data } = res
         const parsedMeditations = parseMeditations(data)
         setMeditations(parsedMeditations)
+        setLoading(false)
       } catch (error) {
         Alert.alert(error)
       }
@@ -40,20 +42,22 @@ const MeditationPlaylist: React.FC = ({ navigation }) => {
   }, [])
 
   return (
-    <>
-      <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.openDrawer()}/>
-      <Container>
-        <Playlist
-          keyExtractor={(item) => String(item.id)}
-          data={meditations}
-          renderItem={({ item }) =>
-            <PlaylistItem>
-              <Card title={item.type} text={item.guide} isPlaylistCard execute={() => navigation.navigate('Meditation', { type: item.type, })}/>
-            </PlaylistItem>
-          }
-        />
-      </Container>
-    </>
+    !loading
+      ? <>
+        <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.openDrawer()}/>
+        <Container>
+          <Playlist
+            keyExtractor={(item) => String(item.id)}
+            data={meditations}
+            renderItem={({ item }) =>
+              <PlaylistItem>
+                <Card title={item.type} text={item.guide} isPlaylistCard execute={() => navigation.navigate('Meditation', { type: item.type, })}/>
+              </PlaylistItem>
+            }
+          />
+        </Container>
+      </>
+      : <ActivityIndicator/>
   )
 }
 

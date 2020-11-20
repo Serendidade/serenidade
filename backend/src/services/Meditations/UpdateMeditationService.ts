@@ -8,11 +8,13 @@ interface Request {
   guide: string
   type: string
   path: string
+  title: string
+  duration: number
 }
 
 class UpdateMeditationService {
   public async execute(
-    { description, guide, type, path }: Request,
+    { description, guide, type, path, title, duration }: Request,
     id: string
   ): Promise<Meditation> {
     const meditationsRepository = getRepository(Meditation)
@@ -30,6 +32,8 @@ class UpdateMeditationService {
       path: path,
       guide: guide,
       type: type,
+      title: title,
+      duration: duration,
     }
 
     Object.keys(request).forEach(

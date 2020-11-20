@@ -27,10 +27,9 @@ const Card: React.FC<Cardas> = ({ title, text, isPlaylistCard, execute }:Cardas)
             <CardIcon name="arrow-right" size={dimensions.icon} onPress={() => execute ? execute() : null}/>
           </>
         )
-
           : (
             <>
-              <Image source={image} style={{ width: 50, height: 100, left: 20 }}/>
+              <Image source={image} style={{ width: 50, height: 100, left: 20, marginRight: 8 }}/>
               <CardContainer hasPlayButton={false}>
                 <CardTitle ellipsizeMode="middle" numberOfLines={1}>
                   {title}

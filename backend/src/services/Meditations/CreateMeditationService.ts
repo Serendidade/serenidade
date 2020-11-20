@@ -8,6 +8,8 @@ interface Request {
   path: string
   type: string
   guide: string
+  title: string
+  duration: number
 }
 
 class CreateMeditationService {
@@ -16,6 +18,8 @@ class CreateMeditationService {
     path,
     type,
     guide,
+    title,
+    duration,
   }: Request): Promise<Meditation> {
     const meditationsRepository = getRepository(Meditation)
 
@@ -32,6 +36,8 @@ class CreateMeditationService {
       type,
       path,
       guide,
+      title,
+      duration,
     })
     const errors = await validate(meditation)
 

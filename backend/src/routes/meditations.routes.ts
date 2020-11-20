@@ -8,7 +8,7 @@ import UpdateMeditationService from '../services/Meditations/UpdateMeditationSer
 const meditationsRoutes = Router()
 
 meditationsRoutes.post('/', async (req, res) => {
-  const { description, type, guide, path } = req.body
+  const { description, type, guide, path, title, duration } = req.body
 
   const createMeditation = new CreateMeditationService()
 
@@ -17,6 +17,8 @@ meditationsRoutes.post('/', async (req, res) => {
     type,
     guide,
     path,
+    title,
+    duration,
   })
 
   return res.json(meditation)
