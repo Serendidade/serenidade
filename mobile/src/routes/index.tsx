@@ -10,6 +10,7 @@ import GetStartedHeadset from '../pages/GetStartedHeadset'
 import Meditation from '../pages/Meditation'
 import MeditationPlaylist from '../pages/MeditationPlaylist'
 import MeditationPlayer from '../pages/MeditationPlayer'
+import Reflection from '../pages/Reflection'
 
 import fonts from '../global/fonts'
 import { View, ScrollView } from 'react-native'
@@ -37,6 +38,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="MeditationPlaylist" component={DrawerRoutes} />
     <Auth.Screen name="MeditationPlayer" component={MeditationPlayer} />
     <Auth.Screen name="Meditation" component={Meditation} />
+    <Auth.Screen name="Reflection" component={DrawerRoutes} />
 
   </Auth.Navigator>
 )
@@ -79,6 +81,11 @@ export const DrawerRoutes: React.FC = (props) => (
           gestureEnabled: true,
           swipeEnabled: true,
         }}/>
+      <Drawer.Screen name="Reflections" component= {Reflection} options={{
+        title: 'Reflexões',
+        gestureEnabled: true,
+        swipeEnabled: true,
+      }}/>
 
     </Drawer.Navigator>
   </>

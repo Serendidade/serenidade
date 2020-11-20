@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import Header from '../../components/Header'
 import { Container, GuideContainer, CurrentMeditationContainer, GuideText, GuideTitle, CurrentMeditationText, CurrentMeditationTitle } from './styles'
 
