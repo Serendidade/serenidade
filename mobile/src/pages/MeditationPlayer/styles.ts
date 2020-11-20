@@ -1,34 +1,38 @@
 import styled from 'styled-components/native'
 
-import colors from '../../global/colors'
 import fonts from '../../global/fonts'
+import dimensions from '../../global/dimensions'
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export const Container = styled.View`
-
-`
-
-export const GuideContainer = styled.View`
-  margin-left: 20px;
-  width: 188px;
+  margin-left: 10px;
   height: 56px;
-  margin-top: 48px;
+  margin-top: 10%;
 `
 
-export const CurrentMeditationContainer = styled.View`
-  margin-left: 20px;
-  width: 188px;
-  height: 56px;
-  margin-top: 44px;
+export const Title = styled.Text`
+  font-size: ${dimensions.textSize.title};
+  font-family: ${fonts.raleway.bold};
 `
 
-export const GuideTitle = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
+export const Text = styled.Text`
+  font-size: ${dimensions.textSize.label};
+  font-family: ${fonts.quicksand.regular};
 `
 
-export const GuideText = styled.Text``
+export const WrapContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+`
 
-export const CurrentMeditationTitle = styled.Text`
+export const PlayerIcon = styled(Icon)`
+  width: 100px;
+  height: 100px;
+  background-color: #7159c1;
+  color: #fafafa;
+  border-radius: 50px;
+  align-self: center;
+
 
 `
-export const CurrentMeditationText = styled.Text``

@@ -4,6 +4,7 @@ import { Container, Playlist, PlaylistItem } from './styles'
 import Header from '../../components/Header'
 import Card from '../../components/Card'
 import api from '../../services/api'
+import { DrawerActions, useNavigation } from '@react-navigation/native'
 
 export interface DataInterface {
   id: number
@@ -21,7 +22,8 @@ function parseMeditations (arr:DataInterface[]):DataInterface[] {
   return parsedMeditation
 }
 
-const MeditationPlaylist: React.FC = ({ navigation }) => {
+const MeditationPlaylist: React.FC = () => {
+  const navigation = useNavigation()
   const [meditations, setMeditations] = useState<DataInterface[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -58,6 +60,7 @@ const MeditationPlaylist: React.FC = ({ navigation }) => {
         </Container>
       </>
       : <ActivityIndicator/>
+
   )
 }
 

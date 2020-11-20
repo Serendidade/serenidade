@@ -20,10 +20,10 @@ export const HeaderTitle = styled.Text`
   font-family: ${fonts.raleway.bold};
   font-size: ${dimensions.textSize.titleHeader};
   color: ${colors.spectres.white[0]};
-  margin-top: 5px;
+  margin-left: 5px;
 `
 
 export const HeaderIcon = styled(Icon)`
  color: ${colors.spectres.white[0]};
- padding: 5px 0px;
+ padding: 10px 0px;
 `

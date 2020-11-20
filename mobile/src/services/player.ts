@@ -25,3 +25,7 @@ export const play = async (track: Track) : Promise<void> => {
   await TrackPlayer.add(track)
   await TrackPlayer.play()
 }
+
+export const pause = async () : Promise<void> => {
+  await TrackPlayer.pause()
+}
