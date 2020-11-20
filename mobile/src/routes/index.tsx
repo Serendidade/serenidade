@@ -38,7 +38,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="MeditationPlaylist" component={DrawerRoutes} />
     <Auth.Screen name="MeditationPlayer" component={MeditationPlayer} />
     <Auth.Screen name="Meditation" component={Meditation} />
-    <Auth.Screen name="Reflection" component={DrawerRoutes} />
+    <Auth.Screen name="Reflections" component={DrawerRoutes} />
 
   </Auth.Navigator>
 )
