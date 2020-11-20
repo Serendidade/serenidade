@@ -1,7 +1,8 @@
 import React from 'react'
-
 import { CardItem, CardText, CardTitle, CardContainer, CardIcon, CardPlayIcon } from './styles'
+import image from '../../assets/img_stretching.png'
 import dimensions from '../../global/dimensions'
+import { Image } from 'react-native'
 
 interface Cardas {
   title: string
@@ -16,7 +17,7 @@ const Card: React.FC<Cardas> = ({ title, text, isPlaylistCard, execute }:Cardas)
       {
         !isPlaylistCard ? (
           <>
-            <CardPlayIcon name="play-circle" size={60} onPress={() => execute ? execute() : null} />
+            <CardPlayIcon name="play-circle" size={60} style={{ left: 16 }} onPress={() => execute ? execute() : null} />
             <CardContainer hasPlayButton>
               <CardTitle ellipsizeMode="middle" numberOfLines={1}>
                 {title}
@@ -29,6 +30,7 @@ const Card: React.FC<Cardas> = ({ title, text, isPlaylistCard, execute }:Cardas)
 
           : (
             <>
+              <Image source={image} style={{ width: 50, height: 100, left: 20 }}/>
               <CardContainer hasPlayButton={false}>
                 <CardTitle ellipsizeMode="middle" numberOfLines={1}>
                   {title}

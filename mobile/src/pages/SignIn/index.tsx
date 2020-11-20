@@ -10,7 +10,6 @@ import Button from '../../components/Button'
 import GoogleButton from '../../components/GoogleButton'
 import Input from '../../components/Input'
 import Header from '../../components/Header'
-// import { Svg, Path } from 'react-native-svg'
 import getValidationErrors from '../../utils/getValidationError'
 import { resetRoutes } from '../../utils/routing'
 
@@ -28,8 +27,6 @@ const SignIn: React.FC = () => {
   const { signIn, user } = useAuth()
 
   const navigation = useNavigation()
-
-  console.log(user)
 
   if (user) navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
 

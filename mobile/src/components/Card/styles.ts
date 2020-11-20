@@ -10,9 +10,9 @@ interface CardContainerProps {
 }
 
 export const CardContainer = styled.View<CardContainerProps>`
-  width: ${props => props.hasPlayButton ? '74%' : '100%'};
+  width: ${props => props.hasPlayButton ? '65%' : '72%'};
   flex-direction: column;
-  left: ${props => props.hasPlayButton ? '9px' : '0'};
+  left: ${props => props.hasPlayButton ? '16px' : '8px'};
   align-items: flex-start;
   justify-content: center;
   margin-left: 12px;
@@ -45,9 +45,7 @@ export const CardTitle = styled.Text`
 export const CardIcon = styled(Icon)`
  color: ${colors.spectres.grey[3]};
  padding-left: 2px;
- margin-left: -14px;
 `
 export const CardPlayIcon = styled(Icon)`
  color: ${colors.secondaryColor};
- margin-right: 8px;
 `
