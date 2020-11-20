@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, } from 'react'
 import { Alert, Image, View, ActivityIndicator } from 'react-native'
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native'
 import api from '../../services/api'
 
 import Card from '../../components/Card'
@@ -16,7 +17,7 @@ import {
 
 import image from '../../assets/lotus_flower_sit.png'
 
-export interface DataInterface {
+ interface MeditationData {
   id: number
   title: string
   type: string
@@ -25,8 +26,14 @@ export interface DataInterface {
   guide: string
 }
 
-const Meditation: React.FC = ({ navigation, route }) => {
-  const [meditations, setMeditations] = useState<DataInterface[]>([])
+type MeditationParams = {
+  Meditation: MeditationData
+}
+
+const Meditation: React.FC = () => {
+  const route = useRoute<RouteProp<MeditationParams, 'Meditation'>>()
+  const navigation = useNavigation()
+  const [meditations, setMeditations] = useState<MeditationData[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -66,7 +73,9 @@ const Meditation: React.FC = ({ navigation, route }) => {
             keyExtractor={(item) => String(item.id)}
             data={meditations}
             renderItem={({ item }) =>
-              <Card title={item.type} text="5 min" isPlaylistCard={false} execute={() => navigation.navigate('MeditationPlayer')}/>
+              <Card title={item.guide} text={item.description} isPlaylistCard={false} execute={() => {
+                navigation.navigate('MeditationPlayer', { item })
+              }}/>
             }
           />
         </Container>

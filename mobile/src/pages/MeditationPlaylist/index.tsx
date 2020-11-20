@@ -46,7 +46,7 @@ const MeditationPlaylist: React.FC = () => {
   return (
     !loading
       ? <>
-        <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.openDrawer()}/>
+        <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.dispatch(DrawerActions.openDrawer())}/>
         <Container>
           <Playlist
             keyExtractor={(item) => String(item.id)}
