@@ -32,7 +32,7 @@ const MeditationPlayer: React.FC = () => {
   useEffect(() => {
     setTrack({
       id: item.id.toString(),
-      title: item.title,
+      title: item.description,
       artist: item.guide,
       url: item.path,
       album: item.type,
@@ -40,7 +40,7 @@ const MeditationPlayer: React.FC = () => {
       description: item.description,
       artwork: 'https://thumbs.dreamstime.com/b/amazing-cartoon-girl-yoga-lotus-practices-meditation-amazing-cartoon-girl-yoga-lotus-practices-meditation-practice-yoga-199094522.jpg'
     })
-  }, [])
+  }, [item])
 
   return (
     <>
@@ -54,7 +54,7 @@ const MeditationPlayer: React.FC = () => {
 
         <Container>
           <Title>Você está ouvindo</Title>
-          <Text>{track.contentType}</Text>
+          <Text>{track?.description}</Text>
         </Container>
 
         <Container>
