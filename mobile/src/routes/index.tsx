@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
@@ -11,10 +11,13 @@ import Meditation from '../pages/Meditation'
 import MeditationPlaylist from '../pages/MeditationPlaylist'
 import MeditationPlayer from '../pages/MeditationPlayer'
 import Reflection from '../pages/Reflection'
+import { useAuth } from '../hooks/auth'
+import { resetRoutes } from '../utils/routing'
 
 import fonts from '../global/fonts'
 import { View, ScrollView } from 'react-native'
 import { Container, Title } from './styles'
+import { useNavigation } from '@react-navigation/native'
 
 const Auth = createStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -40,52 +43,67 @@ const AuthRoutes: React.FC = () => (
   </Auth.Navigator>
 )
 
-export const DrawerRoutes: React.FC = (props) => (
-  <>
-    <Drawer.Navigator
-      initialRouteName="MeditationPlaylist" {...props}
-      keyboardDismissMode="on-drag"
-      detachInactiveScreens={true}
-      drawerContent={(props) =>
-        <>
-          <Container>
-            <Title>Serenidade</Title>
-          </Container>
-          <View style={{ flex: 4 }}>
-            <ScrollView>
-              <DrawerItemList {...props} />
-              <DrawerItem label="Sair" onPress={() => {}} labelStyle={{ fontFamily: fonts.raleway.bold, fontSize: 20, alignSelf: 'auto' }}/>
-            </ScrollView>
-          </View>
-        </>
-      }
-      drawerContentOptions={{
-        activeTintColor: '#7159ff',
-        inactiveTintColor: '#333',
-        itemStyle: { backgroundColor: 'transparent' },
-        labelStyle: { fontFamily: fonts.raleway.bold, fontSize: 20 },
-      }}
-      drawerStyle={{
-        backgroundColor: '#f6f6f6',
-        borderRadius: 5,
+export const DrawerRoutes: React.FC = (props) => {
+  const auth = useAuth()
+  const navigation = useNavigation()
 
-      }}>
-      <Drawer.Screen
-        name="MeditationPlaylist"
-        component={MeditationPlaylist}
-        options={{
-          title: 'Meditações',
+  const exitApp = useCallback(async () => {
+    await auth.signOut()
+    navigation.dispatch((state) => resetRoutes('Welcome', state))
+  }, [auth, navigation])
+
+  return (
+    <>
+      <Drawer.Navigator
+        initialRouteName="MeditationPlaylist" {...props}
+        keyboardDismissMode="on-drag"
+        detachInactiveScreens={true}
+        drawerContent={(props) =>
+          <>
+            <Container>
+              <Title>Serenidade</Title>
+            </Container>
+            <View style={{ flex: 4 }}>
+              <ScrollView>
+                <DrawerItemList {...props} />
+                <DrawerItem
+                  label="Sair"
+                  labelStyle={{ fontFamily: fonts.raleway.bold, fontSize: 20, alignSelf: 'auto' }}
+                  onPress={() => {
+                    exitApp()
+                  }} />
+              </ScrollView>
+            </View>
+          </>
+        }
+        drawerContentOptions={{
+          activeTintColor: '#7159ff',
+          inactiveTintColor: '#333',
+          itemStyle: { backgroundColor: 'transparent' },
+          labelStyle: { fontFamily: fonts.raleway.bold, fontSize: 20 },
+        }}
+        drawerStyle={{
+          backgroundColor: '#f6f6f6',
+          borderRadius: 5,
+
+        }}>
+        <Drawer.Screen
+          name="MeditationPlaylist"
+          component={MeditationPlaylist}
+          options={{
+            title: 'Meditações',
+            gestureEnabled: true,
+            swipeEnabled: true,
+          }}/>
+        <Drawer.Screen name="Reflections" component= {Reflection} options={{
+          title: 'Reflexões',
           gestureEnabled: true,
           swipeEnabled: true,
         }}/>
-      <Drawer.Screen name="Reflections" component= {Reflection} options={{
-        title: 'Reflexões',
-        gestureEnabled: true,
-        swipeEnabled: true,
-      }}/>
 
-    </Drawer.Navigator>
-  </>
-)
+      </Drawer.Navigator>
+    </>
+  )
+}
 
 export default AuthRoutes

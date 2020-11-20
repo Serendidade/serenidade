@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useCallback, useEffect } from 'react'
 import * as Yup from 'yup'
 import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
@@ -28,7 +28,8 @@ const SignIn: React.FC = () => {
 
   const navigation = useNavigation()
 
-  if (user) navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
+  if (user === undefined) console.log('if undefined ')
+  else navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
 
   const handleSignIn = useCallback(async (data: SignInFormData) => {
     try {
@@ -67,7 +68,7 @@ const SignIn: React.FC = () => {
         'Ocorreu um erro ao fazer login, cheque as credenciais.'
       )
     }
-  }, [signIn])
+  }, [signIn, navigation])
 
   return (
     <>
