@@ -15,10 +15,11 @@ export const CardContainer = styled.View<CardContainerProps>`
   left: ${props => props.hasPlayButton ? '9px' : '0'};
   align-items: flex-start;
   justify-content: center;
+  margin-left: 12px;
 `
 
 export const CardItem = styled.View`
-  width: 90%;
+  width: 100%;
   height: 100px;
   background-color: #f8f8f8;
   border-radius: 15px;
@@ -26,7 +27,6 @@ export const CardItem = styled.View`
   align-items: center;
   margin-bottom: 15px;
   margin-top: 15px;
-  margin-left: 15px;
   padding-right: 15px;
 `
 
@@ -45,7 +45,7 @@ export const CardTitle = styled.Text`
 export const CardIcon = styled(Icon)`
  color: ${colors.spectres.grey[3]};
  padding-left: 2px;
- margin-left: 0;
+ margin-left: -14px;
 `
 export const CardPlayIcon = styled(Icon)`
  color: ${colors.secondaryColor};

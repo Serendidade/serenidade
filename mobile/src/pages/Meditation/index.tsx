@@ -2,20 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Alert, Image, View } from 'react-native'
 import api from '../../services/api'
 
-<<<<<<< HEAD
-import { useNavigation } from '@react-navigation/native'
-import { Image } from 'react-native'
-
-
-
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 
-import MeditationImage from '../../assets/img_sitted.png'
-import { player, play } from '../../services/player'
-import { resetRoutes } from '../../utils/routing'
-
-
+import {
+  CardText,
+  CardTitle,
+  ChosenMeditationText,
+  ChosenPlaylistCard,
+  Container,
+  MeditationsList
+} from './styles'
 
 import image from '../../assets/lotus_flower_sit.png'
 
@@ -67,9 +64,7 @@ const Meditation: React.FC = ({ navigation, route }) => {
           keyExtractor={(item) => String(item.id)}
           data={meditations}
           renderItem={({ item }) =>
-            <MeditationItem>
-              <Card title={item.type} text="5 min" isPlaylistCard={false} execute={() => navigation.navigate('MeditationPlayer')}/>
-            </MeditationItem>
+            <Card title={item.type} text="5 min" isPlaylistCard={false} execute={() => navigation.navigate('MeditationPlayer')}/>
           }
         />
       </Container>

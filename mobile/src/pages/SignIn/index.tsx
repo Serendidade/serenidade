@@ -50,7 +50,7 @@ const SignIn: React.FC = () => {
         password: data.password,
       })
 
-      navigation.navigate('Meditation')
+      navigation.navigate('MeditationPlaylist')
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err)
