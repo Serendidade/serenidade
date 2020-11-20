@@ -8,7 +8,7 @@ import AppError from './errors/Error'
 import dotenv from 'dotenv'
 
 const app = express()
-const PORT = 21021
+const PORT = 3333
 
 app.use(express.json())
 app.use(routes)
@@ -30,5 +30,5 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 })
 
 app.listen(PORT, () => {
-  console.log('Server running on port 21021')
+  console.log('Server running on port ' + PORT)
 })
