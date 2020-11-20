@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
-import React, { useCallback } from 'react'
+import React from 'react'
 
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
@@ -14,12 +14,9 @@ import MeditationPlayer from '../pages/MeditationPlayer'
 import fonts from '../global/fonts'
 import { View, ScrollView } from 'react-native'
 import { Container, Title } from './styles'
-import { isFirstAccess } from '../utils/firstAccess'
 
 const Auth = createStackNavigator()
 const Drawer = createDrawerNavigator()
-
-const firstAccess = async () : Promise<Boolean> => await isFirstAccess()
 
 const AuthRoutes: React.FC = () => (
   <Auth.Navigator
