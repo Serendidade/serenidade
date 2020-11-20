@@ -23,7 +23,6 @@ export interface DataInterface {
   path: string
   description: string
   guide: string
-
 }
 
 const Meditation: React.FC = ({ navigation, route }) => {

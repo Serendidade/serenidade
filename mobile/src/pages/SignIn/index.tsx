@@ -12,6 +12,7 @@ import Input from '../../components/Input'
 import Header from '../../components/Header'
 // import { Svg, Path } from 'react-native-svg'
 import getValidationErrors from '../../utils/getValidationError'
+import { resetRoutes } from '../../utils/routing'
 
 import { Container, Title, Label, SubContainer, RegisterContainer, RegisterButton, RegisterButtonText } from './styles'
 
@@ -29,6 +30,8 @@ const SignIn: React.FC = () => {
   const navigation = useNavigation()
 
   console.log(user)
+
+  if (user) navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
 
   const handleSignIn = useCallback(async (data: SignInFormData) => {
     try {
@@ -50,7 +53,7 @@ const SignIn: React.FC = () => {
         password: data.password,
       })
 
-      navigation.navigate('MeditationPlaylist')
+      navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err)
