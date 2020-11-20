@@ -2,24 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Alert } from 'react-native'
 import api from '../../services/api'
 
-<<<<<<< HEAD
-import { useNavigation } from '@react-navigation/native'
-import { Image } from 'react-native'
-=======
->>>>>>> 760f71ebf0eebef5d8b0622e831716be11c4362b
 import {
   MeditationsList, Container, MeditationItem,
 } from './styles'
 
 import Card from '../../components/Card'
 import Header from '../../components/Header'
-<<<<<<< HEAD
-import MeditationImage from '../../assets/img_sitted.png'
-import { player, play } from '../../services/player'
-import { resetRoutes } from '../../utils/routing'
-=======
-
->>>>>>> 760f71ebf0eebef5d8b0622e831716be11c4362b
 export interface DataInterface {
   id: number
   title: string
@@ -27,7 +15,6 @@ export interface DataInterface {
   path: string
   description: string
   guide: string
-
 }
 
 const Meditation: React.FC = ({ navigation, route }) => {

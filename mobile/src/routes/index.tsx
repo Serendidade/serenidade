@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
@@ -14,9 +14,12 @@ import MeditationPlayer from '../pages/MeditationPlayer'
 import fonts from '../global/fonts'
 import { View, ScrollView } from 'react-native'
 import { Container, Title } from './styles'
+import { isFirstAccess } from '../utils/firstAccess'
 
 const Auth = createStackNavigator()
 const Drawer = createDrawerNavigator()
+
+const firstAccess = async () : Promise<Boolean> => await isFirstAccess()
 
 const AuthRoutes: React.FC = () => (
   <Auth.Navigator
@@ -31,7 +34,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="GetStarted" component={GetStarted} />
     <Auth.Screen name="GetStartedHeadset" component={GetStartedHeadset} />
-    <Auth.Screen name="Meditation" component={DrawerRoutes} />
+    <Auth.Screen name="Meditation" component={Meditation} />
     <Auth.Screen name="MeditationPlaylist" component={DrawerRoutes} />
     <Auth.Screen name="MeditationPlayer" component={MeditationPlayer} />
 
@@ -66,22 +69,17 @@ export const DrawerRoutes: React.FC = (props) => (
       drawerStyle={{
         backgroundColor: '#f6f6f6',
         borderRadius: 5,
-<<<<<<< HEAD
+
       }}>
       <Drawer.Screen
-        name="Meditation"
-        component={Meditation}
+        name="MeditationPlaylist"
+        component={MeditationPlaylist}
         options={{
           title: 'Meditações',
           gestureEnabled: true,
           swipeEnabled: true,
         }}/>
-=======
-      }} >
-      <Drawer.Screen name="MeditationPlayer" component={MeditationPlayer} />
-      <Drawer.Screen name="Meditation" component={Meditation} options={{ title: 'Minhas Meditações', gestureEnabled: true, swipeEnabled: true }}/>
-      <Drawer.Screen name="MeditationPlaylist" component={MeditationPlaylist} options={{ title: 'Playlist de Meditações', gestureEnabled: true, swipeEnabled: true }}/>
->>>>>>> 760f71ebf0eebef5d8b0622e831716be11c4362b
+
     </Drawer.Navigator>
   </>
 )
