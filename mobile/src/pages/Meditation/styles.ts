@@ -13,7 +13,7 @@ export const Container = styled.View`
   justify-content: center;
   flex-direction: column;
   padding: 15px;
-  background-color: ${colors.spectres.grey[1]};
+  background-color: #E7E0EF;
   height: 100%;
 `
 

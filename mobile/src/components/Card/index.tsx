@@ -13,7 +13,7 @@ interface CardData {
 
 const Card: React.FC<CardData> = ({ title, text, isPlaylistCard, execute }:CardData) => {
   return (
-    <CardItem>
+    <CardItem style={{ elevation: 3 }}>
       {
         !isPlaylistCard ? (
           <>
@@ -36,7 +36,7 @@ const Card: React.FC<CardData> = ({ title, text, isPlaylistCard, execute }:CardD
                 </CardTitle>
                 <CardText>{text}</CardText>
               </CardContainer>
-              <CardIcon name="chevron-right" size={dimensions.icon} onPress={() => execute ? execute() : null}/>
+              <CardIcon name="chevron-right" size={dimensions.icon} onPress={() => execute ? execute() : null} style={{ right: 20 }}/>
             </>
           )
       }

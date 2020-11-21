@@ -10,7 +10,7 @@ interface CardContainerProps {
 }
 
 export const CardContainer = styled.View<CardContainerProps>`
-  width: ${props => props.hasPlayButton ? '65%' : '72%'};
+  width: ${props => props.hasPlayButton ? '65%' : '73%'};
   flex-direction: column;
   left: ${props => props.hasPlayButton ? '16px' : '8px'};
   align-items: flex-start;
@@ -19,7 +19,6 @@ export const CardContainer = styled.View<CardContainerProps>`
 `
 
 export const CardItem = styled.View`
-  width: 100%;
   height: 100px;
   background-color: #f8f8f8;
   border-radius: 15px;

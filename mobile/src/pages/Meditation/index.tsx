@@ -60,7 +60,7 @@ const Meditation: React.FC = () => {
           <ChosenMeditationText>
           Você escolheu a playlist
           </ChosenMeditationText>
-          <ChosenPlaylistCard>
+          <ChosenPlaylistCard style ={{ elevation: 3 }}>
             <Image source={image} style={{ width: 100, height: 100, top: 16 }}/>
             <View style={{ flexDirection: 'column', top: 40, left: -8 }}>
               <CardTitle>{route.params.type}</CardTitle>
