@@ -20,7 +20,7 @@ export const play = async (track: Track) : Promise<void> => {
   await TrackPlayer.updateOptions({
     stopWithApp: true,
     capabilities,
-    compactCapabilities
+    compactCapabilities,
   })
   await TrackPlayer.add(track)
   await TrackPlayer.play()

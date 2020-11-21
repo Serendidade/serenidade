@@ -5,8 +5,10 @@ import 'express-async-errors'
 import routes from './routes'
 import './database'
 import AppError from './errors/Error'
+import dotenv from 'dotenv'
 
 const app = express()
+const PORT = 3333
 
 app.use(express.json())
 app.use(routes)
@@ -27,6 +29,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   })
 })
 
-app.listen(21021, () => {
-  console.log('Server running on port 21021')
+app.listen(PORT, () => {
+  console.log('Server running on port ' + PORT)
 })

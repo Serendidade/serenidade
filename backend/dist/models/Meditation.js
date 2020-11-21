@@ -10,40 +10,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var User = /** @class */ (function () {
-    function User() {
+var class_validator_1 = require("class-validator");
+var Meditation = /** @class */ (function () {
+    function Meditation() {
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
-        __metadata("design:type", String)
-    ], User.prototype, "id", void 0);
+        __metadata("design:type", Number)
+    ], Meditation.prototype, "id", void 0);
     __decorate([
         typeorm_1.Column(),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
-    ], User.prototype, "name", void 0);
+    ], Meditation.prototype, "description", void 0);
     __decorate([
         typeorm_1.Column(),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
-    ], User.prototype, "email", void 0);
+    ], Meditation.prototype, "type", void 0);
     __decorate([
         typeorm_1.Column(),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
-    ], User.prototype, "password", void 0);
+    ], Meditation.prototype, "title", void 0);
     __decorate([
         typeorm_1.Column(),
+        class_validator_1.IsNotEmpty(),
+        __metadata("design:type", Number)
+    ], Meditation.prototype, "duration", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
-    ], User.prototype, "google_id", void 0);
+    ], Meditation.prototype, "guide", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        class_validator_1.IsNotEmpty(),
+        __metadata("design:type", String)
+    ], Meditation.prototype, "path", void 0);
     __decorate([
         typeorm_1.CreateDateColumn(),
         __metadata("design:type", Date)
-    ], User.prototype, "created_at", void 0);
+    ], Meditation.prototype, "created_at", void 0);
     __decorate([
         typeorm_1.UpdateDateColumn(),
         __metadata("design:type", Date)
-    ], User.prototype, "updated_at", void 0);
-    User = __decorate([
-        typeorm_1.Entity('users')
-    ], User);
-    return User;
+    ], Meditation.prototype, "updated_at", void 0);
+    Meditation = __decorate([
+        typeorm_1.Entity('meditations')
+    ], Meditation);
+    return Meditation;
 }());
-exports.default = User;
+exports.default = Meditation;

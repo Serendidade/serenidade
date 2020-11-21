@@ -8,42 +8,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var User = /** @class */ (function () {
-    function User() {
+var class_validator_1 = require("class-validator");
+var User_1 = __importDefault(require("./User"));
+var Reflection = /** @class */ (function () {
+    function Reflection() {
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
-        __metadata("design:type", String)
-    ], User.prototype, "id", void 0);
+        __metadata("design:type", Number)
+    ], Reflection.prototype, "id", void 0);
     __decorate([
+        class_validator_1.IsNotEmpty(),
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "name", void 0);
+    ], Reflection.prototype, "content", void 0);
     __decorate([
-        typeorm_1.Column(),
+        typeorm_1.ManyToOne(function () { return User_1.default; }, function (user) { return user.id; }),
         __metadata("design:type", String)
-    ], User.prototype, "email", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "password", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "google_id", void 0);
+    ], Reflection.prototype, "user", void 0);
     __decorate([
         typeorm_1.CreateDateColumn(),
         __metadata("design:type", Date)
-    ], User.prototype, "created_at", void 0);
+    ], Reflection.prototype, "created_at", void 0);
     __decorate([
         typeorm_1.UpdateDateColumn(),
         __metadata("design:type", Date)
-    ], User.prototype, "updated_at", void 0);
-    User = __decorate([
-        typeorm_1.Entity('users')
-    ], User);
-    return User;
+    ], Reflection.prototype, "updated_at", void 0);
+    Reflection = __decorate([
+        typeorm_1.Entity('reflections')
+    ], Reflection);
+    return Reflection;
 }());
-exports.default = User;
+exports.default = Reflection;

@@ -4,7 +4,7 @@ import Header from '../../components/Header'
 import { Container, Title, Text, PlayerIcon, WrapContainer } from './styles'
 import { player, play, pause } from '../../services/player'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import { Track } from 'react-native-track-player'
+import { PITCH_ALGORITHM_MUSIC, Track } from 'react-native-track-player'
 
 interface Meditation {
   id: number
@@ -31,6 +31,7 @@ const MeditationPlayer: React.FC = () => {
 
   useEffect(() => {
     setTrack({
+      pitchAlgorithm: PITCH_ALGORITHM_MUSIC,
       id: item.id.toString(),
       title: item.description,
       artist: item.guide,
