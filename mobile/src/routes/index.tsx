@@ -11,6 +11,7 @@ import Meditation from '../pages/Meditation'
 import MeditationPlaylist from '../pages/MeditationPlaylist'
 import MeditationPlayer from '../pages/MeditationPlayer'
 import Reflection from '../pages/Reflection'
+import DetailReflection from '../pages/Reflection/Detail'
 import { useAuth } from '../hooks/auth'
 import { resetRoutes } from '../utils/routing'
 
@@ -39,7 +40,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="MeditationPlayer" component={MeditationPlayer} />
     <Auth.Screen name="Meditation" component={Meditation} />
     <Auth.Screen name="Reflections" component={DrawerRoutes} />
-
+    <Auth.Screen name="DetailReflection" component={DetailReflection} />
   </Auth.Navigator>
 )
 
