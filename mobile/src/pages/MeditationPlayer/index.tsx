@@ -1,10 +1,10 @@
 
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, } from 'react'
 import Header from '../../components/Header'
 import { Container, Title, Text, PlayerIcon, WrapContainer } from './styles'
-import { player, play, pause } from '../../services/player'
+import { player, play, pause, currentState, ISPAUSED, ISSTOPPED, ISPLAYING } from '../../services/player'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import { PITCH_ALGORITHM_MUSIC, Track } from 'react-native-track-player'
+import TrackPlayer, { PITCH_ALGORITHM_MUSIC, Track } from 'react-native-track-player'
 
 interface Meditation {
   id: number
@@ -43,6 +43,29 @@ const MeditationPlayer: React.FC = () => {
     })
   }, [item])
 
+  const checkState = useCallback(() => {
+    async () => {
+      await currentState() === ISPLAYING
+
+      if (await currentState() === (ISPAUSED || ISSTOPPED)) setPlaying(false)
+      else setPlaying(true)
+    }
+
+    return function cleanup () {
+      setPlaying(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log('Updated trackplayer')
+    TrackPlayer.addEventListener('remote-pause', () => setPlaying(false))
+    TrackPlayer.addEventListener('remote-stop', () => setPlaying(false))
+
+    return function cleanup () {
+      TrackPlayer.destroy()
+    }
+  }, [])
+
   return (
     <>
       <Header headerTitle={'Trilhando a paz'} headerIcon="arrow-left" execute={() => navigation.goBack()}/>
@@ -59,15 +82,18 @@ const MeditationPlayer: React.FC = () => {
         </Container>
 
         <Container>
+          {checkState()}
           {!isPlaying
             ? <PlayerIcon name='play' size={100} onPress={() => {
               player()
               play(track)
               setPlaying(true)
+              currentState()
             }}/>
             : <PlayerIcon name='pause' size={100} onPress={() => {
               pause()
               setPlaying(false)
+              currentState()
             }}/>
           }
         </Container>
