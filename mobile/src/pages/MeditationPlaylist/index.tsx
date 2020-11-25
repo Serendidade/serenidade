@@ -41,6 +41,11 @@ const MeditationPlaylist: React.FC = () => {
     }
 
     loadMeditations()
+
+    return () => {
+      setMeditations([])
+      setLoading(false)
+    }
   }, [])
 
   return (

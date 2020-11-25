@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from 'react'
+import React, { useRef, useCallback } from 'react'
 import * as Yup from 'yup'
 import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
