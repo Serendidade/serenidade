@@ -50,6 +50,11 @@ const Meditation: React.FC = () => {
     }
 
     loadMeditations()
+
+    return () => {
+      setMeditations([])
+      setLoading(false)
+    }
   }, [route.params.type])
 
   return (

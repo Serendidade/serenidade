@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Container, Phrase } from './styles'
 import { ScrollView, Image } from 'react-native'
@@ -21,7 +21,9 @@ const GetStarted: React.FC = () => {
     }
   }, [navigation])
 
-  checkFirstAccess()
+  useLayoutEffect(() => {
+    checkFirstAccess()
+  }, [checkFirstAccess])
 
   return (
     <>
