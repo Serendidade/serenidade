@@ -77,8 +77,9 @@ const SignIn: React.FC = () => {
         style={{ flex: 1, }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
-        <ScrollView contentContainerStyle={{ backgroundColor: '#fff' }}
-          keyboardShouldPersistTaps="handled">
+        <ScrollView contentContainerStyle={{ backgroundColor: '#E7EFFF', flexGrow: 1 }}
+          keyboardShouldPersistTaps="handled"
+        >
           <Container>
             <Form ref={formRef} onSubmit={handleSignIn} style={{ width: '100%' }}>
               <Label>E-mail</Label>

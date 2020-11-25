@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from 'react'
-import { ActivityIndicator, Alert } from 'react-native'
+import { ActivityIndicator, Alert, ScrollView } from 'react-native'
 import { Container, Playlist, PlaylistItem } from './styles'
 import Header from '../../components/Header'
 import Card from '../../components/Card'
@@ -50,7 +50,7 @@ const MeditationPlaylist: React.FC = () => {
 
   return (
     !loading
-      ? <>
+      ? <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.dispatch(DrawerActions.openDrawer())}/>
         <Container>
           <Playlist
@@ -63,7 +63,7 @@ const MeditationPlaylist: React.FC = () => {
             }
           />
         </Container>
-      </>
+      </ScrollView>
       : <ActivityIndicator/>
 
   )

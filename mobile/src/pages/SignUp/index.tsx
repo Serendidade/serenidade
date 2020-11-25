@@ -129,11 +129,12 @@ const SignUp: React.FC = () => {
     <>
       <Header headerTitle="Criar minha conta" headerIcon="arrow-left" execute={() => { navigation.goBack() }}/>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={{ flex: 1, backgroundColor: '#E7EFFF' }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
-          keyboardShouldPersistTaps="handled">
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ flexGrow: 1 }}>
           <Container>
             <Form ref={formRef} onSubmit={handleSignUp} style={{ width: '100%' }}>
               <Label>Nome</Label>

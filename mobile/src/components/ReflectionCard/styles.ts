@@ -2,70 +2,78 @@ import styled from 'styled-components/native'
 import fonts from '../../global/fonts'
 import colors from '../../global/colors'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { TouchableOpacity } from 'react-native'
 
-interface CardItemProps {
-  isDateCard: boolean
-  cardColor: string
+interface IconProps{
+  isDelete: boolean
 }
 
-export const CardItem = styled.View<CardItemProps>`
+export const DateCardItem = styled.View`
   width: 95%;
-  background-color:${props => props.cardColor};
-  min-height: ${props => !props.isDateCard ? '60px' : '0px'};
-  border-radius:${props => props.isDateCard ? '8px' : '10px'};
-  margin-bottom: ${props => props.isDateCard ? '0px' : '8px'};
-  margin-top: ${props => !props.isDateCard ? '8px' : '0px'};
+  background-color:#7159c1;
+  border-radius: 8px;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
 
 `
 
-export const CardText = styled.Text`
+export const ReflectionCardItem = styled.View`
+  width: 95%;
+  background-color: #fff;
+  min-height: 60px;
+  border-radius:10px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction:row;
+`
+
+export const DateCardText = styled.Text`
+  font-family: ${fonts.quicksand.bold};
+  font-size: 16px;
+  text-align: center;
+  color: ${colors.spectres.white};
+`
+
+export const ReflectionCardText = styled.Text`
   font-family: ${fonts.quicksand.bold};
   font-size: 16px;
   margin-left: 30px;
   text-align: left;
-  padding-right: 12px;
-  color: ${colors.spectres.white};
+  color: ${colors.spectres.grey[3]};
+  padding-right: 8px;
 `
 
-export const CardIcon = styled(Icon)`
- color: ${colors.spectres.white};
- align-items: flex-end;
- padding-left: 2px;
- margin-left: 8px;
+export const CardIcon = styled(Icon)<IconProps>`
+  justify-content: space-between;
+  color: ${props => props.isDelete ? 'red' : colors.spectres.grey[2]};
+  right: 4px;
 `
 export const CardContainer = styled.View`
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
-
 `
 
 export const ActionContainer = styled.View`
-  justify-content: center;
-  padding: 8px 12px 8px 0;
-  margin: 40px 20px;
-  right: 16px;
+  position: absolute;
   z-index: 3;
-  background-color: #E7E0EF;
-  width: auto;
-  height: auto;
-  border-radius: 4px;
-
+  background-color: ${colors.spectres.grey[0]};
+  align-items: flex-end;
+  justify-content: space-evenly;
+  width: 100px;
+  height: 80px;
+  padding: 8px;
+  border-radius: 8px;
 `
 
-export const ActionItem = styled.View`
-flex-direction: row;
-text-align: left;
-width: auto;
+export const ActionItem = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  width: auto;
   height: auto;
 `
 
 export const ActionText = styled.Text`
   font-size: 16px;
-  color: ${colors.spectres.grey[0]};
-text-align: left;
-
+  color: ${colors.spectres.white};
 `

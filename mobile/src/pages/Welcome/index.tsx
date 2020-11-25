@@ -5,7 +5,6 @@ import { GoogleSignin } from '@react-native-community/google-signin'
 import { GOOGLE_WEBCLIENT_ID } from '@env'
 import { useAuth } from '../../hooks/auth'
 
-import colors from '../../global/colors'
 import dimensions from '../../global/dimensions'
 import { Container, Title, Button, ButtonText, ButtonContainer, ButtonIcon } from './styles'
 
@@ -27,7 +26,7 @@ const Welcome: React.FC = () => {
 
   return (
     <View style={{
-      backgroundColor: colors.primatyAccentColor,
+      backgroundColor: '#e7efff',
       height: '100%',
     }}>
 

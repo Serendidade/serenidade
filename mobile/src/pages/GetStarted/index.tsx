@@ -1,7 +1,7 @@
 import React, { useCallback, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Container, Phrase } from './styles'
-import { ScrollView, Image } from 'react-native'
+import { ScrollView, Image, View } from 'react-native'
 
 import ImgStretching from '../../assets/img_stretching.png'
 import dimensions from '../../global/dimensions'
@@ -26,7 +26,7 @@ const GetStarted: React.FC = () => {
   }, [checkFirstAccess])
 
   return (
-    <>
+    <View style={{ backgroundColor: '#e7efff' }}>
       <Header headerTitle="Trilhando a felicidade" />
       <ScrollView keyboardShouldPersistTaps="handled">
         <Container>
@@ -43,7 +43,7 @@ const GetStarted: React.FC = () => {
             Continuar
         </Button>
       </Container>
-    </>
+    </View>
   )
 }
 

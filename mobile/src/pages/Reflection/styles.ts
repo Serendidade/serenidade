@@ -33,7 +33,7 @@ export const Wrap = styled.View`
   align-self: center;
   padding: 16px 0;
   border-radius: 8px;
-  background-color: #f0f0f0;
+  background-color: #E7E0EF;
 `
 
 export const CardIcon = styled(Icon)`

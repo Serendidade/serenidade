@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from 'react'
-import { Alert, Image, View, ActivityIndicator } from 'react-native'
+import { Alert, Image, View, ActivityIndicator, ScrollView } from 'react-native'
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native'
 import api from '../../services/api'
 
@@ -59,7 +59,7 @@ const Meditation: React.FC = () => {
 
   return (
     !loading
-      ? <>
+      ? <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
         <Header headerTitle="Caminho da Paz" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
         <Container>
           <ChosenMeditationText>
@@ -86,7 +86,7 @@ const Meditation: React.FC = () => {
           />
         </Container>
 
-      </>
+      </ScrollView>
       : <ActivityIndicator/>
   )
 }

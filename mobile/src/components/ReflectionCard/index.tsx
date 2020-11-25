@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
-import { TouchableOpacity } from 'react-native'
-import { CardIcon, CardItem, CardText, CardContainer, ActionContainer, ActionItem, ActionText } from './styles'
+import { useNavigation } from '@react-navigation/native'
+import {
+  CardIcon,
+  DateCardItem,
+  DateCardText,
+  ReflectionCardText,
+  CardContainer,
+  ActionContainer,
+  ActionItem,
+  ActionText,
+  ReflectionCardItem
+} from './styles'
 
 interface ReflectionData {
   content: string
@@ -9,25 +19,45 @@ interface ReflectionData {
 }
 
 interface ReflectionCardParams {
-  text: string
-  iconName?: string
-  isDateCard: boolean
-  cardColor: string
-  executeDelete?(): void
-  executeUpdate?({ content, id, created_at }: ReflectionData): void
-  item?: ReflectionData
+  executeDelete(): void
+  executeUpdate({ content, id, created_at }: ReflectionData): void
+  item: ReflectionData
 
 }
 
-const ReflectionCard: React.FC<ReflectionCardParams> = ({ text, iconName, isDateCard, cardColor, item, executeDelete, executeUpdate }: ReflectionCardParams) => {
+const ReflectionCard: React.FC<ReflectionCardParams> = ({ item, executeDelete, executeUpdate }: ReflectionCardParams) => {
   const [visibleActions, setVisibleActions] = useState(false)
+
+  const navigation = useNavigation()
   return (
     <CardContainer>
-      <CardItem isDateCard cardColor={cardColor} >
-        <CardText>
-          {text}
-        </CardText>
-      </CardItem>
+      <DateCardItem >
+        <DateCardText>
+          {item.created_at}
+        </DateCardText>
+      </DateCardItem>
+      <ReflectionCardItem>
+        <ReflectionCardText>
+          {item.content}
+        </ReflectionCardText>
+        <CardIcon name="dots-vertical" isDelete={false} size={30} onPress={() => setVisibleActions(!visibleActions)}/>
+
+      </ReflectionCardItem>
+      {visibleActions ? <ActionContainer>
+        <ActionItem onPress={() => navigation.navigate('DetailReflection', { content: item.content, id: item.id })}>
+          <CardIcon name="comment-edit" isDelete={false} size={30} onPress={() => setVisibleActions(!visibleActions)}/>
+
+          <ActionText>
+              Editar
+          </ActionText>
+        </ActionItem>
+        <ActionItem onPress={() => executeDelete()}>
+          <CardIcon name="trash-can-outline" isDelete size={30} color={'#7159c1' }onPress={() => setVisibleActions(!visibleActions)}/>
+          <ActionText>
+              Excluir
+          </ActionText>
+        </ActionItem>
+      </ActionContainer> : null}
     </CardContainer>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Container, Phrase } from './styles'
-import { ScrollView, Image } from 'react-native'
+import { ScrollView, Image, View } from 'react-native'
 
 import ImgHeadset from '../../assets/img_headset.png'
 import dimensions from '../../global/dimensions'
@@ -18,7 +18,7 @@ const GetStartedHeadset: React.FC = () => {
   const navigation = useNavigation()
 
   return (
-    <>
+    <View style={{ backgroundColor: '#e7efff' }}>
       <Header headerTitle="Trilhando a felicidade" />
 
       <ScrollView keyboardShouldPersistTaps="handled">
@@ -37,7 +37,7 @@ const GetStartedHeadset: React.FC = () => {
             Continuar
         </Button>
       </Container>
-    </>
+    </View>
   )
 }
 

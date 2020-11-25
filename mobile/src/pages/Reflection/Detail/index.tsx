@@ -1,24 +1,44 @@
 import React, { useState, useEffect } from 'react'
-import { Text } from 'react-native'
-
-// import { Container } from './styles';
+import { View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import Header from '../../../components/Header'
+import { Container, ContentInput, ReflectionSaveButton } from './styles'
 
 interface ReflectionData {
   content: string
   id: number
-  created_at: string
 }
 
-const Detail: React.FC<ReflectionData> = ({ content, id, created_at }: ReflectionData) => {
-  const [reflection, setReflection] = useState<ReflectionData>({})
+const Detail: React.FC = ({ route }) => {
+  const [content, setContent] = useState('')
+  const [id, setId] = useState(0)
+  const navigation = useNavigation()
 
   useEffect(() => {
-    setReflection({ content, id, created_at })
+    if (route.params.content !== null) {
+      setContent(route.params.content)
+      setId(route.params.id)
+    }
   }, [])
 
-  return <Text>
-    {content}
-  </Text>
+  return (
+    <View style={{ backgroundColor: '#E7EFFF' }}>
+      <Header headerTitle="Escreva sua reflexão" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
+
+      <Container>
+        <ContentInput
+          onChangeText={text => setContent(text)}
+          placeholder="Sou grato(a) por..."
+          defaultValue={content}
+          style={{ textAlignVertical: 'top', }}
+          multiline={true}
+        />
+        <ReflectionSaveButton>
+          Salvar
+        </ReflectionSaveButton>
+      </Container>
+    </View>
+  )
 }
 
 export default Detail

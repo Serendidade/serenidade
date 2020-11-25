@@ -13,7 +13,7 @@ export const Container = styled.View`
   justify-content: center;
   flex-direction: column;
   padding: 15px;
-  background-color: #E7E0EF;
+  background-color: #E7EFFF;
   height: 100%;
 `
 

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { ScrollView, FlatList, Alert } from 'react-native'
 
+import { format, parseIso } from 'date-fns'
+
 import Header from '../../components/Header'
 import ReflectionCard from '../../components/ReflectionCard'
-import colors from '../../global/colors'
 
 import api from '../../services/api'
 
@@ -33,8 +34,8 @@ const Reflection: React.FC = () => {
     loadReflections()
   }, [])
 
-  function handleUpdateReflection ({ content, id, created_at }: ReflectionData):void {
-    navigation.navigate('DetailReflection', { content, id, created_at })
+  function handleUpdateReflection ({ item }: ReflectionData):void {
+    navigation.navigate('DetailReflection')
   }
 
   function handleDeleteReflection ():void {
@@ -44,8 +45,8 @@ const Reflection: React.FC = () => {
     <>
       <Header headerTitle="Reflexões" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
 
-      <ScrollView style={{ backgroundColor: '#e7e0ef' }}>
-        <AddReflectionCard onPress={() => navigation.navigate('DetailReflection') }>
+      <ScrollView style={{ backgroundColor: '#E7EFFF' }} horizontal={false}>
+        <AddReflectionCard onPress={() => navigation.navigate('DetailReflection', { item: null }) }>
           <CardText>
           O que te fez sentir gratidão hoje
           </CardText>
@@ -57,18 +58,11 @@ const Reflection: React.FC = () => {
             <FlatList keyExtractor={item => String(item.id)}
               data={reflections}
               renderItem={({ item }) => (
-                <>
-                  <ReflectionCard text={String(item.created_at)} isDateCard cardColor ={colors.secondaryColor} />
-                  <ReflectionCard
-                    text={item.content}
-                    isDateCard={false}
-                    cardColor={colors.spectres.grey[3]}
-                    iconName="dots-vertical"
-                    executeDelete={() => handleDeleteReflection}
-                    executeUpdate={handleUpdateReflection}
-                    item={item}
-                  />
-                </>
+                <ReflectionCard
+                  executeDelete={handleDeleteReflection}
+                  executeUpdate={handleUpdateReflection}
+                  item={item}
+                />
               )}
             />
           </Container>
