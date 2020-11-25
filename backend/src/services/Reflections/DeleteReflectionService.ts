@@ -1,5 +1,6 @@
 import { createQueryBuilder, getRepository } from 'typeorm'
 import Reflection from '../../models/Reflection'
+import User from '../../models/User'
 import AppError from '../../errors/Error'
 
 interface Response {
@@ -7,8 +8,15 @@ interface Response {
 }
 
 class DeleteReflectionService {
-  public async execute(id: string): Promise<Response> {
+  public async execute(id: string, userId: string): Promise<Response> {
     const reflectionsRepository = getRepository(Reflection)
+    const usersRepository = getRepository(User)
+    const userFound = await usersRepository.findOne({ id: userId })
+
+    if (!userFound) {
+      throw new AppError('User not found')
+    }
+
     try {
       const reflection = await reflectionsRepository.findOne(id)
       if (!reflection) {

@@ -44,18 +44,19 @@ reflectionsRoutes.get('/:id', async (req, res) => {
 
 reflectionsRoutes.get('/', async (req, res) => {
   const listReflection = new ListReflectionService()
-
-  const reflections = await listReflection.execute()
+  const { userId } = req.body
+  const reflections = await listReflection.execute(userId)
 
   return res.json(reflections)
 })
 
 reflectionsRoutes.delete('/:id', async (req, res) => {
   const { id } = req.params
+  const { userId } = req.body
 
   const deleteReflection = new DeleteReflectionService()
 
-  const deletionMessage = await deleteReflection.execute(id)
+  const deletionMessage = await deleteReflection.execute(id, userId)
 
   return res.json(deletionMessage)
 })
