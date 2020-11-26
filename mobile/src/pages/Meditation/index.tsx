@@ -59,7 +59,7 @@ const Meditation: React.FC = () => {
 
   return (
     <>
-      <Header headerTitle={route.params.type} headerIcon="menu" />
+      <Header headerTitle={route.params.type} headerIcon="arrow-left" execute={() => { navigation.goBack() }}/>
       {!loading
         ? <Container>
           <ChosenMeditationText>
