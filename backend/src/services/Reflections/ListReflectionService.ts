@@ -8,7 +8,6 @@ class ListReflectionService {
     const reflectionsRepository = getRepository(Reflection)
     const usersRepository = getRepository(User)
     const userFound = await usersRepository.findOne({ id: userId })
-
     if (!userFound) {
       throw new AppError('User not found')
     }

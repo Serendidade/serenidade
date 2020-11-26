@@ -8,25 +8,24 @@ import ShowReflectionService from '../services/Reflections/ShowReflectionService
 const reflectionsRoutes = Router()
 
 reflectionsRoutes.post('/', async (req, res) => {
-  const { content, user_id } = req.body
+  const { content, userId } = req.body
 
   const createReflecion = new CreateReflectionService()
 
-  const reflection = await createReflecion.execute({ content, user_id })
+  const reflection = await createReflecion.execute({ content, userId })
 
   return res.json(reflection)
 })
 
-reflectionsRoutes.put('/:id', async (req, res) => {
+reflectionsRoutes.post('/update/:id', async (req, res) => {
   const { id } = req.params
-  const { content, user_id } = req.body
-
+  const { content, userId } = req.body
   const updateReflection = new UpdateReflectionService()
 
   const reflection = await updateReflection.execute({
     content,
     reflection_id: id,
-    user_id,
+    userId,
   })
 
   return res.json(reflection)
@@ -42,7 +41,7 @@ reflectionsRoutes.get('/:id', async (req, res) => {
   return res.json(reflection)
 })
 
-reflectionsRoutes.get('/', async (req, res) => {
+reflectionsRoutes.post('/index', async (req, res) => {
   const listReflection = new ListReflectionService()
   const { userId } = req.body
   const reflections = await listReflection.execute(userId)
@@ -50,7 +49,7 @@ reflectionsRoutes.get('/', async (req, res) => {
   return res.json(reflections)
 })
 
-reflectionsRoutes.delete('/:id', async (req, res) => {
+reflectionsRoutes.post('/delete/:id', async (req, res) => {
   const { id } = req.params
   const { userId } = req.body
 

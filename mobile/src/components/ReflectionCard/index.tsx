@@ -19,13 +19,12 @@ interface ReflectionData {
 }
 
 interface ReflectionCardParams {
-  executeDelete(): void
-  executeUpdate({ content, id, created_at }: ReflectionData): void
+  executeDelete(reflectionId: number): void
   item: ReflectionData
 
 }
 
-const ReflectionCard: React.FC<ReflectionCardParams> = ({ item, executeDelete, executeUpdate }: ReflectionCardParams) => {
+const ReflectionCard: React.FC<ReflectionCardParams> = ({ item, executeDelete }: ReflectionCardParams) => {
   const [visibleActions, setVisibleActions] = useState(false)
 
   const navigation = useNavigation()
@@ -51,7 +50,7 @@ const ReflectionCard: React.FC<ReflectionCardParams> = ({ item, executeDelete, e
               Editar
           </ActionText>
         </ActionItem>
-        <ActionItem onPress={() => executeDelete()}>
+        <ActionItem onPress={() => executeDelete(item.id)}>
           <CardIcon name="trash-can-outline" isDelete size={30} color={'#7159c1' }onPress={() => setVisibleActions(!visibleActions)}/>
           <ActionText>
               Excluir

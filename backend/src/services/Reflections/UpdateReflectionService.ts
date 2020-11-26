@@ -7,14 +7,14 @@ import User from '../../models/User'
 interface Request {
   content: string
   reflection_id: string
-  user_id: string
+  userId: string
 }
 
 class UpdateReflectionService {
   public async execute({
     content,
     reflection_id,
-    user_id,
+    userId,
   }: Request): Promise<Reflection> {
     const reflectionsRepository = getRepository(Reflection)
     const usersRepository = getRepository(User)
@@ -23,14 +23,14 @@ class UpdateReflectionService {
       throw new AppError('Please type a content do be updated')
     }
 
-    const userFound = await usersRepository.findOne({ id: user_id })
+    const userFound = await usersRepository.findOne({ id: userId })
 
     if (!userFound) {
       throw new AppError('User not found')
     }
 
     const reflection = await reflectionsRepository.findOne({
-      where: { id: reflection_id, user: user_id },
+      where: { id: reflection_id, user: userId },
     })
 
     if (!reflection) {

@@ -7,22 +7,22 @@ import User from '../../models/User'
 
 interface Request {
   content: string
-  user_id: string
+  userId: string
 }
 
 class CreateReflectionService {
-  public async execute({ content, user_id }: Request): Promise<Reflection> {
+  public async execute({ content, userId }: Request): Promise<Reflection> {
     const reflectionsRepository = getRepository(Reflection)
     const usersRepository = getRepository(User)
 
-    const userFound = await usersRepository.findOne({ id: user_id })
+    const userFound = await usersRepository.findOne({ id: userId })
 
     if (!userFound) {
       throw new AppError('User not found')
     }
 
     const reflection = reflectionsRepository.create({
-      user: user_id,
+      user: userId,
       content,
     })
 

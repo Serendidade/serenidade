@@ -2,7 +2,6 @@ import styled from 'styled-components/native'
 import fonts from '../../global/fonts'
 import colors from '../../global/colors'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { TouchableOpacity } from 'react-native'
 
 interface IconProps{
   isDelete: boolean
