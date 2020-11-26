@@ -14,7 +14,7 @@ import {
 
 interface ReflectionData {
   content: string
-  created_at: Date
+  formattedDate: Date
   id: number
 }
 
@@ -32,7 +32,7 @@ const ReflectionCard: React.FC<ReflectionCardParams> = ({ item, executeDelete }:
     <CardContainer>
       <DateCardItem >
         <DateCardText>
-          {item.created_at}
+          {item.formattedDate}
         </DateCardText>
       </DateCardItem>
       <ReflectionCardItem>
