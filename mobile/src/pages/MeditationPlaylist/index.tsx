@@ -49,7 +49,6 @@ const MeditationPlaylist: React.FC = () => {
   }, [])
 
   return (
-
     <>
       <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.dispatch(DrawerActions.openDrawer())}/>
       <Container>
@@ -67,7 +66,6 @@ const MeditationPlaylist: React.FC = () => {
         }
       </Container>
     </>
-
   )
 }
 

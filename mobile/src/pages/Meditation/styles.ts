@@ -9,6 +9,7 @@ import { DataInterface } from './index'
 import { FlatList } from 'react-native'
 
 export const Container = styled.View`
+flex: 1;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;

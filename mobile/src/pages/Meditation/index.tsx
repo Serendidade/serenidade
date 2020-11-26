@@ -58,12 +58,12 @@ const Meditation: React.FC = () => {
   }, [])
 
   return (
-    !loading
-      ? <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
-        <Header headerTitle="Caminho da Paz" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
-        <Container>
+    <>
+      <Header headerTitle={route.params.type} headerIcon="menu" />
+      {!loading
+        ? <Container>
           <ChosenMeditationText>
-          Você escolheu a playlist
+    Você escolheu a playlist
           </ChosenMeditationText>
           <ChosenPlaylistCard style ={{ elevation: 3 }}>
             <Image source={image} style={{ width: 100, height: 100, top: 16 }}/>
@@ -73,7 +73,7 @@ const Meditation: React.FC = () => {
             </View>
           </ChosenPlaylistCard>
           <ChosenMeditationText>
-          Sessões
+    Sessões
           </ChosenMeditationText>
           <MeditationsList
             keyExtractor={(item) => String(item.id)}
@@ -85,9 +85,9 @@ const Meditation: React.FC = () => {
             }
           />
         </Container>
-
-      </ScrollView>
-      : <ActivityIndicator/>
+        : <ActivityIndicator/>
+      }
+    </>
   )
 }
 
