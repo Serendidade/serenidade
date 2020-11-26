@@ -18,7 +18,7 @@ const GetStartedHeadset: React.FC = () => {
   const navigation = useNavigation()
 
   return (
-    <View style={{ backgroundColor: '#e7efff' }}>
+    <View style={{ backgroundColor: '#e7efff', flex: 1 }}>
       <Header headerTitle="Trilhando a felicidade" />
 
       <ScrollView keyboardShouldPersistTaps="handled">

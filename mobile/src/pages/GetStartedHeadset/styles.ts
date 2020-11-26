@@ -5,7 +5,7 @@ import fonts from '../../global/fonts'
 import dimensions from '../../global/dimensions'
 
 export const Container = styled.View`
-  flex: 1;
+
   justify-content: center;
   align-items: center;
   padding: 15px;

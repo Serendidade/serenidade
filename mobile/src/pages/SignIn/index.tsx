@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useCallback, useLayoutEffect } from 'react'
 import * as Yup from 'yup'
 import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
@@ -28,8 +28,10 @@ const SignIn: React.FC = () => {
 
   const navigation = useNavigation()
 
-  if (user === undefined) console.log('if undefined ')
-  else navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
+  useLayoutEffect(() => {
+    if (user === undefined) console.log('if undefined ')
+    else navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
+  }, [user, navigation])
 
   const handleSignIn = useCallback(async (data: SignInFormData) => {
     try {

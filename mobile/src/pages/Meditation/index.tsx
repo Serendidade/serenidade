@@ -55,7 +55,7 @@ const Meditation: React.FC = () => {
       setMeditations([])
       setLoading(false)
     }
-  }, [route.params.type])
+  }, [])
 
   return (
     !loading

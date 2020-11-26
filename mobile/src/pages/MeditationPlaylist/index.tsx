@@ -49,11 +49,12 @@ const MeditationPlaylist: React.FC = () => {
   }, [])
 
   return (
-    !loading
-      ? <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.dispatch(DrawerActions.openDrawer())}/>
-        <Container>
-          <Playlist
+
+    <>
+      <Header headerTitle="Minhas meditações" headerIcon="menu" execute={() => navigation.dispatch(DrawerActions.openDrawer())}/>
+      <Container>
+        {!loading
+          ? <Playlist
             keyExtractor={(item) => String(item.id)}
             data={meditations}
             renderItem={({ item }) =>
@@ -62,9 +63,10 @@ const MeditationPlaylist: React.FC = () => {
               </PlaylistItem>
             }
           />
-        </Container>
-      </ScrollView>
-      : <ActivityIndicator/>
+          : <ActivityIndicator/>
+        }
+      </Container>
+    </>
 
   )
 }

@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState, useCallback, } from 'react'
-import { View } from 'react-native'
 import Header from '../../components/Header'
 import { Container, Title, Text, PlayerIcon, WrapContainer } from './styles'
 import { player, play, pause, currentState, ISPAUSED, ISSTOPPED, ISPLAYING } from '../../services/player'
