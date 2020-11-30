@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
-import { ScrollView, FlatList, Alert, Text } from 'react-native'
+import { SafeAreaView, FlatList, Alert, View } from 'react-native'
 import { format, parseISO } from 'date-fns'
 import pt from 'date-fns/locale/pt'
 
@@ -15,7 +15,7 @@ import { Container, AddReflectionCard, Wrap, CardText, CardIcon } from './styles
 
 interface ReflectionData {
   content: string
-  created_at: Date
+  formattedDate: Date
   id: number
 }
 
@@ -30,11 +30,21 @@ const Reflection: React.FC = () => {
     async function loadReflections ():Promise<void> {
       try {
         const res = await api.post('reflections/index', { userId: id })
-        const parsedReflection = res.data.map(item => {
+        const parsedReflections = res.data.map(item => {
           const parsedDate = parseISO(item.created_at)
-          const formattedDate = format(parsedDate, "dd 'de' MMMM, ")
+<<<<<<< HEAD
+          const formattedDate = format(parsedDate, "dd 'de' MMMM")
+          item.created_at = formattedDate
+=======
+          const formattedDate = format(parsedDate, "dd 'de' MMMM yyyy", { locale: pt })
+
+          return {
+            formattedDate,
+            ...item
+          }
+>>>>>>> 89103f56deb263c515fb6f72990be62b44aa6704
         })
-        setReflections(res.data)
+        setReflections(parsedReflections)
       } catch (error) {
         Alert.alert(error)
       }
@@ -58,15 +68,16 @@ const Reflection: React.FC = () => {
 
   return (
     <>
-      <Header headerTitle="Reflexões" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
+      <Header headerTitle="Reflexões" headerIcon="menu" execute={() => navigation.goBack()}/>
       <AddReflectionCard onPress={() => navigation.navigate('DetailReflection', { item: null }) }>
         <CardText>
-          O que te fez sentir gratidão hoje
+            O que te fez sentir gratidão hoje
         </CardText>
         <CardIcon name="plus" size={30}/>
       </AddReflectionCard>
+
       {reflections.length > 0
-        ? <ScrollView style={{ backgroundColor: '#E7EFFF' }} horizontal={false}>
+        ? <SafeAreaView style={{ backgroundColor: '#E7EFFF', flex: 1 }}>
 
           <Wrap style={{ elevation: 3 }}>
             <Container>
@@ -81,7 +92,7 @@ const Reflection: React.FC = () => {
               />
             </Container>
           </Wrap>
-        </ScrollView>
+        </SafeAreaView>
         : null
       }
     </>

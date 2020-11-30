@@ -1,6 +1,8 @@
 import React, { useEffect, useState, } from 'react'
 import { Alert, Image, View, ActivityIndicator, ScrollView } from 'react-native'
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native'
+import { formatDuration, intervalToDuration } from 'date-fns'
+import pt from 'date-fns/locale/pt'
 import api from '../../services/api'
 
 import Card from '../../components/Card'
@@ -41,8 +43,15 @@ const Meditation: React.FC = () => {
     async function loadMeditations ():Promise<void> {
       try {
         const res = await api.get(`/meditations?q=${route.params.type}`)
-        const { data } = res
-        setMeditations(data)
+
+        const formattedMeditations = res.data.map(item => {
+          const parsedDuration = formatDuration(intervalToDuration({ start: 0, end: (Number(item.duration) * 1000) }), { locale: pt })
+          return {
+            parsedDuration,
+            ...item
+          }
+        })
+        setMeditations(formattedMeditations)
         setLoading(false)
       } catch (error) {
         Alert.alert(error)
@@ -63,7 +72,7 @@ const Meditation: React.FC = () => {
       {!loading
         ? <Container>
           <ChosenMeditationText>
-    Você escolheu a playlist
+            Você escolheu a playlist
           </ChosenMeditationText>
           <ChosenPlaylistCard style ={{ elevation: 3 }}>
             <Image source={image} style={{ width: 100, height: 100, top: 16 }}/>
@@ -73,13 +82,13 @@ const Meditation: React.FC = () => {
             </View>
           </ChosenPlaylistCard>
           <ChosenMeditationText>
-    Sessões
+            Sessões
           </ChosenMeditationText>
           <MeditationsList
             keyExtractor={(item) => String(item.id)}
             data={meditations}
             renderItem={({ item }) =>
-              <Card title={item.title} text={item.duration} isPlaylistCard={false} execute={() => {
+              <Card title={item.title} text={item.parsedDuration} isPlaylistCard={false} execute={() => {
                 navigation.navigate('MeditationPlayer', { item })
               }}/>
             }
