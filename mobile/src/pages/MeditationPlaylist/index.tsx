@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from 'react'
-import { ActivityIndicator, Alert, ScrollView } from 'react-native'
+import { ActivityIndicator, Alert } from 'react-native'
 import { Container, Playlist, PlaylistItem } from './styles'
 import Header from '../../components/Header'
 import Card from '../../components/Card'

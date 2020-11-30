@@ -4,6 +4,8 @@ import dimensions from '../../global/dimensions'
 import fonts from '../../global/fonts'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import Logo from '../../assets/logo_transparent.png'
+
 export const Container = styled.View`
   flex: 1;
   align-items: flex-start;
@@ -34,4 +36,15 @@ export const ButtonText = styled.Text`
 `
 export const ButtonIcon = styled(Icon)`
   color: ${colors.spectres.green[0]};
+`
+
+export const LogoContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`
+
+export const LogoImage = styled.Image`
+  width: ${dimensions.image}px;
+  height: ${dimensions.image}px;
 `

@@ -16,7 +16,7 @@ import { useAuth } from '../hooks/auth'
 import { resetRoutes } from '../utils/routing'
 
 import fonts from '../global/fonts'
-import { View, ScrollView } from 'react-native'
+import { View } from 'react-native'
 import { Container, Title } from './styles'
 import { useNavigation } from '@react-navigation/native'
 
@@ -64,16 +64,16 @@ export const DrawerRoutes: React.FC = (props) => {
             <Container>
               <Title>Serenidade</Title>
             </Container>
-            <View style={{ flex: 4 }}>
-              <ScrollView>
-                <DrawerItemList {...props} />
-                <DrawerItem
-                  label="Sair"
-                  labelStyle={{ fontFamily: fonts.raleway.bold, fontSize: 20, alignSelf: 'auto' }}
-                  onPress={() => {
-                    exitApp()
-                  }} />
-              </ScrollView>
+            <View style={{ flex: 4, justifyContent: 'space-between' }}>
+
+              <DrawerItemList {...props} />
+              <View style={{ flex: 4 }} />
+              <DrawerItem
+                label="Sair"
+                labelStyle={{ fontFamily: fonts.raleway.bold, fontSize: 20, color: 'red' }}
+                onPress={() => {
+                  exitApp()
+                }} />
             </View>
           </>
         }

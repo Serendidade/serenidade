@@ -6,7 +6,8 @@ import { GOOGLE_WEBCLIENT_ID } from '@env'
 import { useAuth } from '../../hooks/auth'
 
 import dimensions from '../../global/dimensions'
-import { Container, Title, Button, ButtonText, ButtonContainer, ButtonIcon } from './styles'
+import { Container, Title, Button, ButtonText, ButtonContainer, ButtonIcon, LogoImage, LogoContainer } from './styles'
+import Logo from '../../assets/logo_transparent.png'
 
 const Welcome: React.FC = () => {
   const navigation = useNavigation()
@@ -29,7 +30,9 @@ const Welcome: React.FC = () => {
       backgroundColor: '#e7efff',
       height: '100%',
     }}>
-
+      <LogoContainer>
+        <LogoImage source={Logo} />
+      </LogoContainer>
       <Container>
         <Title>Ja possui uma conta?</Title>
 
