@@ -32,17 +32,13 @@ const Reflection: React.FC = () => {
         const res = await api.post('reflections/index', { userId: id })
         const parsedReflections = res.data.map(item => {
           const parsedDate = parseISO(item.created_at)
-<<<<<<< HEAD
-          const formattedDate = format(parsedDate, "dd 'de' MMMM")
-          item.created_at = formattedDate
-=======
+
           const formattedDate = format(parsedDate, "dd 'de' MMMM yyyy", { locale: pt })
 
           return {
             formattedDate,
             ...item
           }
->>>>>>> 89103f56deb263c515fb6f72990be62b44aa6704
         })
         setReflections(parsedReflections)
       } catch (error) {
