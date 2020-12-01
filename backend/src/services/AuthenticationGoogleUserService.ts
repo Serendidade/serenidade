@@ -25,9 +25,7 @@ class AuthenticationService {
     if (!user) {
       throw new AppError('Google SignIn Error', 401)
     }
-
     const passwordMatched = await compare(password, user.password)
-
     if (!passwordMatched) {
       throw new AppError('Google SignIn Error', 401)
     }

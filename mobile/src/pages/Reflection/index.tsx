@@ -50,7 +50,7 @@ const Reflection: React.FC = () => {
     return function cleanup () {
       setReflections([])
     }
-  }, [isFocused])
+  }, [isFocused, id])
 
   async function handleDeleteReflection (reflectionId:number):Promise<void> {
     try {
@@ -64,7 +64,7 @@ const Reflection: React.FC = () => {
 
   return (
     <>
-      <Header headerTitle="Reflexões" headerIcon="menu" execute={() => navigation.goBack()}/>
+      <Header headerTitle="Reflexões" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
       <AddReflectionCard onPress={() => navigation.navigate('DetailReflection', { item: null }) }>
         <CardText>
             O que te fez sentir gratidão hoje

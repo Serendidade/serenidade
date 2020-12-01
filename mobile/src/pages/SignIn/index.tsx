@@ -4,6 +4,7 @@ import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
 import { KeyboardAvoidingView, Platform, ScrollView, TextInput, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import api from '../../services/api'
 
 import { useAuth } from '../../hooks/auth'
 import Button from '../../components/Button'
@@ -11,6 +12,8 @@ import GoogleButton from '../../components/GoogleButton'
 import Input from '../../components/Input'
 import Header from '../../components/Header'
 import getValidationErrors from '../../utils/getValidationError'
+import { GoogleSignin, statusCodes, User as GoogleUser } from '@react-native-community/google-signin'
+
 import { resetRoutes } from '../../utils/routing'
 
 import { Container, Title, Label, SubContainer, RegisterContainer, RegisterButton, RegisterButtonText } from './styles'
@@ -20,11 +23,15 @@ interface SignInFormData {
   password: string
 }
 
+interface SignInGoogleData extends SignInFormData {
+  google_id: string
+}
+
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const passwordInputRef = useRef<TextInput>(null)
 
-  const { signIn, user } = useAuth()
+  const { signIn, googleSignIn, user } = useAuth()
 
   const navigation = useNavigation()
 
@@ -32,6 +39,60 @@ const SignIn: React.FC = () => {
     if (user === undefined) console.log('if undefined ')
     else navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
   }, [user, navigation])
+
+  const handleGoogleSignIn = useCallback(async () => {
+    try {
+      await GoogleSignin.hasPlayServices()
+
+      const userInfo: GoogleUser = await GoogleSignin.signIn()
+
+      const data: SignInGoogleData = {
+        email: userInfo.user.email,
+        google_id: userInfo.user.id,
+        password: userInfo.user.id
+      }
+
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .required('E-mail obrigatório')
+          .email('Digite um e-mail válido'),
+        password: Yup.string().required('Senha obrigatória'),
+        google_id: Yup.string().required('ID invalido'),
+      })
+
+      await schema.validate(data, {
+        abortEarly: false
+      })
+
+      if (data) {
+        const res = await api.post('/sessions/google',
+          {
+            google_id: data.google_id,
+            password: data.password
+          })
+        const { user, token } = res.data
+        googleSignIn({ user, token })
+      }
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        Alert.alert(
+          'Erro na autenticação',
+          'O login foi cancelado'
+        )
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        Alert.alert(
+          'Erro na autenticação',
+          'É necessário a playstore para poder se registrar com Google.'
+        )
+      } else {
+        Alert.alert(
+          'Erro ao fazer login',
+          'Nao foi possivel fazer login com sua conta do Google.'
+        )
+      }
+    }
+  }, [])
 
   const handleSignIn = useCallback(async (data: SignInFormData) => {
     try {
@@ -116,7 +177,7 @@ const SignIn: React.FC = () => {
                 formRef.current?.submitForm()
               }}
             >Entrar</Button>
-            <GoogleButton />
+            <GoogleButton onPress={handleGoogleSignIn}/>
           </SubContainer>
 
           <RegisterContainer>

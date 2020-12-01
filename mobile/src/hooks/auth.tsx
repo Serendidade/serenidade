@@ -12,6 +12,7 @@ interface User {
   id: string
   email: string
   name: string
+  google_id?:string
 }
 
 interface AuthState {
@@ -24,11 +25,17 @@ interface SignInCredentials {
   password: string
 }
 
+interface googleSignInCredentials {
+  user: User
+  token: string
+}
+
 interface AuthContextData {
   user: User
   loading: boolean
   signIn(credentials: SignInCredentials): Promise<void>
   signOut(): void
+  googleSignIn(credential: googleSignInCredentials): void
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -74,14 +81,24 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({ token, user })
   }, [])
 
+  const googleSignIn = useCallback(async ({ user, token }) => {
+    await AsyncStorage.multiSet([
+      ['@GoBarber:token', token],
+      ['@GoBarber:user', JSON.stringify(user)],
+    ])
+
+    api.defaults.headers.authorization = `Bearer ${token[1]}`
+
+    setData({ token, user })
+  }, [])
+
   const signOut = useCallback(async () => {
     await AsyncStorage.multiRemove(['@GoBarber:user', '@GoBarber:token'])
-
     setData({} as AuthState)
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user: data.user, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data.user, loading, signIn, signOut, googleSignIn }}>
       {children}
     </AuthContext.Provider>
   )

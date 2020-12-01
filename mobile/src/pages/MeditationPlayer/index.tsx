@@ -35,7 +35,7 @@ const MeditationPlayer: React.FC = () => {
       id: item.id.toString(),
       title: item.description,
       artist: item.guide,
-      url: item.path,
+      url: 'http://192.168.1.9:3333/audio',
       album: item.type,
       contentType: item.type,
       description: item.description,

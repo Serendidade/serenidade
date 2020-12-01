@@ -45,7 +45,6 @@ const ReflectionCard: React.FC<ReflectionCardParams> = ({ item, executeDelete }:
       {visibleActions ? <ActionContainer>
         <ActionItem onPress={() => navigation.navigate('DetailReflection', { content: item.content, id: item.id })}>
           <CardIcon name="comment-edit" isDelete={false} size={30} onPress={() => setVisibleActions(!visibleActions)}/>
-
           <ActionText>
               Editar
           </ActionText>
