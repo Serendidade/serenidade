@@ -48,7 +48,7 @@ var CreateReflectionService = /** @class */ (function () {
     function CreateReflectionService() {
     }
     CreateReflectionService.prototype.execute = function (_a) {
-        var content = _a.content, user_id = _a.user_id;
+        var content = _a.content, userId = _a.userId;
         return __awaiter(this, void 0, void 0, function () {
             var reflectionsRepository, usersRepository, userFound, reflection, errors;
             return __generator(this, function (_b) {
@@ -56,14 +56,14 @@ var CreateReflectionService = /** @class */ (function () {
                     case 0:
                         reflectionsRepository = typeorm_1.getRepository(Reflection_1.default);
                         usersRepository = typeorm_1.getRepository(User_1.default);
-                        return [4 /*yield*/, usersRepository.findOne({ id: user_id })];
+                        return [4 /*yield*/, usersRepository.findOne({ id: userId })];
                     case 1:
                         userFound = _b.sent();
                         if (!userFound) {
                             throw new Error_1.default('User not found');
                         }
                         reflection = reflectionsRepository.create({
-                            user: user_id,
+                            user: userId,
                             content: content,
                         });
                         return [4 /*yield*/, class_validator_1.validate(reflection)];

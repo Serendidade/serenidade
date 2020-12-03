@@ -47,31 +47,31 @@ var DeleteReflectionService_1 = __importDefault(require("../services/Reflections
 var ShowReflectionService_1 = __importDefault(require("../services/Reflections/ShowReflectionService"));
 var reflectionsRoutes = express_1.Router();
 reflectionsRoutes.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, content, user_id, createReflecion, reflection;
+    var _a, content, userId, createReflecion, reflection;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, content = _a.content, user_id = _a.user_id;
+                _a = req.body, content = _a.content, userId = _a.userId;
                 createReflecion = new CreateReflectionService_1.default();
-                return [4 /*yield*/, createReflecion.execute({ content: content, user_id: user_id })];
+                return [4 /*yield*/, createReflecion.execute({ content: content, userId: userId })];
             case 1:
                 reflection = _b.sent();
                 return [2 /*return*/, res.json(reflection)];
         }
     });
 }); });
-reflectionsRoutes.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, _a, content, user_id, updateReflection, reflection;
+reflectionsRoutes.post('/update/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, _a, content, userId, updateReflection, reflection;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 id = req.params.id;
-                _a = req.body, content = _a.content, user_id = _a.user_id;
+                _a = req.body, content = _a.content, userId = _a.userId;
                 updateReflection = new UpdateReflectionService_1.default();
                 return [4 /*yield*/, updateReflection.execute({
                         content: content,
                         reflection_id: id,
-                        user_id: user_id,
+                        userId: userId,
                     })];
             case 1:
                 reflection = _b.sent();
@@ -93,27 +93,29 @@ reflectionsRoutes.get('/:id', function (req, res) { return __awaiter(void 0, voi
         }
     });
 }); });
-reflectionsRoutes.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var listReflection, reflections;
+reflectionsRoutes.post('/index', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var listReflection, userId, reflections;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 listReflection = new ListReflectionService_1.default();
-                return [4 /*yield*/, listReflection.execute()];
+                userId = req.body.userId;
+                return [4 /*yield*/, listReflection.execute(userId)];
             case 1:
                 reflections = _a.sent();
                 return [2 /*return*/, res.json(reflections)];
         }
     });
 }); });
-reflectionsRoutes.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, deleteReflection, deletionMessage;
+reflectionsRoutes.post('/delete/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, userId, deleteReflection, deletionMessage;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 id = req.params.id;
+                userId = req.body.userId;
                 deleteReflection = new DeleteReflectionService_1.default();
-                return [4 /*yield*/, deleteReflection.execute(id)];
+                return [4 /*yield*/, deleteReflection.execute(id, userId)];
             case 1:
                 deletionMessage = _a.sent();
                 return [2 /*return*/, res.json(deletionMessage)];

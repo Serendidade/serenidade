@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { StatusBar, View } from 'react-native'
+import { LogBox, StatusBar, View } from 'react-native'
 
 import colors from './global/colors'
 import Routes from './routes'
@@ -9,6 +9,7 @@ import AppProvider from './hooks'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const App: React.FC = () => {
+  LogBox.ignoreAllLogs()
   return (
     <NavigationContainer>
       <StatusBar barStyle="light-content" backgroundColor={colors.spectres.purple[0]} />

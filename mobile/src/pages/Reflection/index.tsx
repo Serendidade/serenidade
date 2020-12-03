@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-import { useNavigation, useIsFocused } from '@react-navigation/native'
+import { useNavigation, useIsFocused, DrawerActions } from '@react-navigation/native'
 import { SafeAreaView, FlatList, Alert, View } from 'react-native'
 import { format, parseISO } from 'date-fns'
 import pt from 'date-fns/locale/pt'
@@ -64,7 +64,7 @@ const Reflection: React.FC = () => {
 
   return (
     <>
-      <Header headerTitle="Reflexões" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
+      <Header headerTitle="Reflexões" headerIcon="menu" execute={() => navigation.dispatch(DrawerActions.openDrawer())}/>
       <AddReflectionCard onPress={() => navigation.navigate('DetailReflection', { item: null }) }>
         <CardText>
             O que te fez sentir gratidão hoje

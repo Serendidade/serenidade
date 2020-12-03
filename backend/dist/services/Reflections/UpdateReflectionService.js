@@ -47,7 +47,7 @@ var UpdateReflectionService = /** @class */ (function () {
     function UpdateReflectionService() {
     }
     UpdateReflectionService.prototype.execute = function (_a) {
-        var content = _a.content, reflection_id = _a.reflection_id, user_id = _a.user_id;
+        var content = _a.content, reflection_id = _a.reflection_id, userId = _a.userId;
         return __awaiter(this, void 0, void 0, function () {
             var reflectionsRepository, usersRepository, userFound, reflection;
             return __generator(this, function (_b) {
@@ -58,14 +58,14 @@ var UpdateReflectionService = /** @class */ (function () {
                         if (!content) {
                             throw new Error_1.default('Please type a content do be updated');
                         }
-                        return [4 /*yield*/, usersRepository.findOne({ id: user_id })];
+                        return [4 /*yield*/, usersRepository.findOne({ id: userId })];
                     case 1:
                         userFound = _b.sent();
                         if (!userFound) {
                             throw new Error_1.default('User not found');
                         }
                         return [4 /*yield*/, reflectionsRepository.findOne({
-                                where: { id: reflection_id, user: user_id },
+                                where: { id: reflection_id, user: userId },
                             })];
                     case 2:
                         reflection = _b.sent();

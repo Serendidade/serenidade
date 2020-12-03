@@ -73,7 +73,8 @@ export const DrawerRoutes: React.FC = (props) => {
                 labelStyle={{ fontFamily: fonts.raleway.bold, fontSize: 20, color: 'red' }}
                 onPress={() => {
                   exitApp()
-                }} />
+                }}
+              />
             </View>
           </>
         }

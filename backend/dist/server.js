@@ -10,6 +10,7 @@ var routes_1 = __importDefault(require("./routes"));
 require("./database");
 var Error_1 = __importDefault(require("./errors/Error"));
 var app = express_1.default();
+var PORT = 3333;
 app.use(express_1.default.json());
 app.use(routes_1.default);
 app.use(function (err, request, response, _) {
@@ -25,6 +26,6 @@ app.use(function (err, request, response, _) {
         message: 'Internal server error',
     });
 });
-app.listen(21021, function () {
-    console.log('Server running on port 21021');
+app.listen(PORT, function () {
+    console.log('Server running on port ' + PORT);
 });

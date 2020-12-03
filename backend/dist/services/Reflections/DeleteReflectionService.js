@@ -41,22 +41,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
 var Reflection_1 = __importDefault(require("../../models/Reflection"));
+var User_1 = __importDefault(require("../../models/User"));
 var Error_1 = __importDefault(require("../../errors/Error"));
 var DeleteReflectionService = /** @class */ (function () {
     function DeleteReflectionService() {
     }
-    DeleteReflectionService.prototype.execute = function (id) {
+    DeleteReflectionService.prototype.execute = function (id, userId) {
         return __awaiter(this, void 0, void 0, function () {
-            var reflectionsRepository, reflection, error_1;
+            var reflectionsRepository, usersRepository, userFound, reflection, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         reflectionsRepository = typeorm_1.getRepository(Reflection_1.default);
-                        _a.label = 1;
+                        usersRepository = typeorm_1.getRepository(User_1.default);
+                        return [4 /*yield*/, usersRepository.findOne({ id: userId })];
                     case 1:
-                        _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, reflectionsRepository.findOne(id)];
+                        userFound = _a.sent();
+                        if (!userFound) {
+                            throw new Error_1.default('User not found');
+                        }
+                        _a.label = 2;
                     case 2:
+                        _a.trys.push([2, 5, , 6]);
+                        return [4 /*yield*/, reflectionsRepository.findOne(id)];
+                    case 3:
                         reflection = _a.sent();
                         if (!reflection) {
                             throw new Error_1.default('Reflection not found');
@@ -66,13 +74,13 @@ var DeleteReflectionService = /** @class */ (function () {
                                 .from(Reflection_1.default)
                                 .where('id = :id', { id: id })
                                 .execute()];
-                    case 3:
+                    case 4:
                         _a.sent();
                         return [2 /*return*/, { message: 'Reflection deleted successfully' }];
-                    case 4:
+                    case 5:
                         error_1 = _a.sent();
                         throw new Error_1.default('Not able to delete selected reflection');
-                    case 5: return [2 /*return*/];
+                    case 6: return [2 /*return*/];
                 }
             });
         });

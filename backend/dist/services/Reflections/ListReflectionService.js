@@ -41,18 +41,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
 var Reflection_1 = __importDefault(require("../../models/Reflection"));
+var User_1 = __importDefault(require("../../models/User"));
+var Error_1 = __importDefault(require("../../errors/Error"));
 var ListReflectionService = /** @class */ (function () {
     function ListReflectionService() {
     }
-    ListReflectionService.prototype.execute = function () {
+    ListReflectionService.prototype.execute = function (userId) {
         return __awaiter(this, void 0, void 0, function () {
-            var reflectionsRepository, reflections;
+            var reflectionsRepository, usersRepository, userFound, reflections;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         reflectionsRepository = typeorm_1.getRepository(Reflection_1.default);
-                        return [4 /*yield*/, reflectionsRepository.find()];
+                        usersRepository = typeorm_1.getRepository(User_1.default);
+                        return [4 /*yield*/, usersRepository.findOne({ id: userId })];
                     case 1:
+                        userFound = _a.sent();
+                        if (!userFound) {
+                            throw new Error_1.default('User not found');
+                        }
+                        return [4 /*yield*/, reflectionsRepository.find({
+                                where: "userId = \"" + userId + "\"",
+                            })];
+                    case 2:
                         reflections = _a.sent();
                         return [2 /*return*/, reflections];
                 }
