@@ -35,6 +35,7 @@ const Detail: React.FC = ({ route }) => {
         console.log(res)
       } else {
         await api.post('reflections', { userId: id, content: content })
+        navigation.goBack()
       }
     } catch (error) {
       Alert.alert(error)
@@ -42,7 +43,7 @@ const Detail: React.FC = ({ route }) => {
   }
 
   return (
-    <View style={{ backgroundColor: '#E7EFFF' }}>
+    <>
       <Header headerTitle="Escreva sua reflexão" headerIcon="arrow-left" execute={() => navigation.goBack()}/>
 
       <Container>
@@ -55,10 +56,11 @@ const Detail: React.FC = ({ route }) => {
           multiline={true}
         />
         <ReflectionSaveButton onPress={() => handleSaveReflection()}>
-          Salvar
+          Salvar reflexão
         </ReflectionSaveButton>
       </Container>
-    </View>
+
+    </>
   )
 }
 

@@ -13,6 +13,7 @@ import getValidationErrors from '../../utils/getValidationError'
 import { Container, Label, SubContainer } from './styles'
 import { GoogleSignin, statusCodes, User as GoogleUser } from '@react-native-community/google-signin'
 import { useNavigation } from '@react-navigation/native'
+import { resetRoutes } from '../../utils/routing'
 
 interface SignUpFormData {
   name: string
@@ -52,6 +53,8 @@ const SignUp: React.FC = () => {
         'Cadastro realizado com sucesso!',
         'Você já pode fazer login na aplicação.'
       )
+
+      navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err)
@@ -104,6 +107,8 @@ const SignUp: React.FC = () => {
         'Cadastro realizado com sucesso!',
         'Você já pode fazer login na aplicação.'
       )
+
+      navigation.dispatch((state) => resetRoutes('MeditationPlaylist', state))
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         Alert.alert(

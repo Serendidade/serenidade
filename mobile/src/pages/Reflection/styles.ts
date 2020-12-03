@@ -12,7 +12,9 @@ export const Container = styled.View`
 export const AddReflectionCard = styled(TouchableOpacity)`
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 95%;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin: 20px 15px 20px 15px;
   background-color: ${colors.primaryColor};
   height: 60px;
   align-self: center;
@@ -31,7 +33,7 @@ export const CardText = styled.Text`
 export const Wrap = styled.View`
   width: 95%;
   align-self: center;
-  padding: 16px 0;
+  padding: 15px;
   border-radius: 8px;
   background-color: #E7E0EF;
 `

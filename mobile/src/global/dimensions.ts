@@ -3,7 +3,7 @@ import { widthPercentageToDP } from '../utils/dpCalculation'
 export default {
   textSize: {
     titleHeader: `${widthPercentageToDP(7.7)}px`,
-    title: `${widthPercentageToDP(5.1)}px`,
+    title: `${widthPercentageToDP(4.9)}px`,
     label: `${widthPercentageToDP(4.6)}px`,
     textInput: `${widthPercentageToDP(4.1)}px`,
   },
@@ -13,5 +13,5 @@ export default {
     width: `${widthPercentageToDP(100)}%`,
     height: `${widthPercentageToDP(15)}px`
   },
-  image: widthPercentageToDP(80),
+  image: widthPercentageToDP(70),
 }

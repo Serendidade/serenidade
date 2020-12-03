@@ -3,13 +3,16 @@ import Button from '../../../components/Button'
 import { TextInput } from 'react-native'
 
 export const Container = styled.View`
+  flex: 1;
   align-items: center;
-  margin-top: 24px;
-
+  flex-direction: column;
+  background-color: #E7EFFF;
+  padding: 15px;
 `
 export const ContentInput = styled(TextInput)`
-  width: 95%;
+  width: 100%;
   height: 80%;
+  padding-left: 5px;
   background-color: #fff;
   border-radius: 8px;
   color: #7159c1;
@@ -19,9 +22,6 @@ export const ContentInput = styled(TextInput)`
 `
 
 export const ReflectionSaveButton = styled(Button)`
-  width: 36%;
-  height: 6%;
-  align-self: flex-end;
-  margin-right: 8px;
-  margin-top: 12px;
+
+
 `
