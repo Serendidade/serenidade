@@ -29,18 +29,20 @@ const Reflection: React.FC = () => {
   useEffect(() => {
     async function loadReflections ():Promise<void> {
       try {
-        const res = await api.post('reflections/index', { userId: id })
-        const parsedReflections = res.data.map(item => {
-          const parsedDate = parseISO(item.created_at)
+        if (id) {
+          const res = await api.post('reflections/index', { userId: id })
+          const parsedReflections = res.data.map(item => {
+            const parsedDate = parseISO(item.created_at)
 
-          const formattedDate = format(parsedDate, "dd 'de' MMMM yyyy", { locale: pt })
+            const formattedDate = format(parsedDate, "dd 'de' MMMM yyyy", { locale: pt })
 
-          return {
-            formattedDate,
-            ...item
-          }
-        })
-        setReflections(parsedReflections)
+            return {
+              formattedDate,
+              ...item
+            }
+          })
+          setReflections(parsedReflections)
+        }
       } catch (error) {
         Alert.alert(error)
       }
@@ -50,7 +52,7 @@ const Reflection: React.FC = () => {
     return function cleanup () {
       setReflections([])
     }
-  }, [isFocused])
+  }, [isFocused, id])
 
   async function handleDeleteReflection (reflectionId:number):Promise<void> {
     try {
