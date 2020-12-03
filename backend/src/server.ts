@@ -8,7 +8,7 @@ import AppError from './errors/Error'
 import dotenv from 'dotenv'
 
 const app = express()
-const PORT = 3333
+const PORT = 21021
 
 app.use(express.json())
 app.use(routes)
