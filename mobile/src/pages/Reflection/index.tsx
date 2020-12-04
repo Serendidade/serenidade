@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useNavigation, useIsFocused, DrawerActions } from '@react-navigation/native'
-import { SafeAreaView, FlatList, Alert, View } from 'react-native'
+import { SafeAreaView, FlatList, Alert } from 'react-native'
 import { format, parseISO } from 'date-fns'
 import pt from 'date-fns/locale/pt'
 
@@ -29,20 +29,18 @@ const Reflection: React.FC = () => {
   useEffect(() => {
     async function loadReflections ():Promise<void> {
       try {
-        if (id) {
-          const res = await api.post('reflections/index', { userId: id })
-          const parsedReflections = res.data.map(item => {
-            const parsedDate = parseISO(item.created_at)
+        const res = await api.post('reflections/index', { userId: id })
+        const parsedReflections = res.data.map(item => {
+          const parsedDate = parseISO(item.created_at)
 
-            const formattedDate = format(parsedDate, "dd 'de' MMMM yyyy", { locale: pt })
+          const formattedDate = format(parsedDate, "dd 'de' MMMM yyyy", { locale: pt })
 
-            return {
-              formattedDate,
-              ...item
-            }
-          })
-          setReflections(parsedReflections)
-        }
+          return {
+            formattedDate,
+            ...item
+          }
+        })
+        setReflections(parsedReflections)
       } catch (error) {
         Alert.alert(error)
       }
