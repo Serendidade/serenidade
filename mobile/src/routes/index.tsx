@@ -16,7 +16,7 @@ import { useAuth } from '../hooks/auth'
 import { resetRoutes } from '../utils/routing'
 
 import fonts from '../global/fonts'
-import { View } from 'react-native'
+import { BackHandler, View } from 'react-native'
 import { Container, Title } from './styles'
 import { useNavigation } from '@react-navigation/native'
 
@@ -49,8 +49,8 @@ export const DrawerRoutes: React.FC = (props) => {
   const navigation = useNavigation()
 
   const exitApp = useCallback(async () => {
-    await auth.signOut()
-    navigation.dispatch((state) => resetRoutes('Welcome', state))
+    BackHandler.exitApp()
+    auth.signOut()
   }, [auth, navigation])
 
   return (
