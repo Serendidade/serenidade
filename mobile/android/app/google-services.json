@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "635073479787",
+    "firebase_url": "https://serenity-11bce.firebaseio.com",
+    "project_id": "serenity-11bce",
+    "storage_bucket": "serenity-11bce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635073479787:android:18e05c9856e433499c5d2e",
+        "android_client_info": {
+          "package_name": "ucb.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635073479787-gnoiqu0p15ktpgifkp4lidg80ncgepqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ucb.mobile",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "635073479787-dth76pl1niioobfl7vcam1q6j1phvtmu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZV8Gs9Az1GesFYwLFYwngdJ9jnb6sd5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635073479787-dth76pl1niioobfl7vcam1q6j1phvtmu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "mysql",
+  "host": "mysql.serenidade.kinghost.net",
+  "port": 3306,
+  "username": "serenidade",
+  "password": "Serenidade2020",
+  "database": "serenidade",
+  "entities": [
+    "./src/models/*.ts"
+  ],
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
+}
+
