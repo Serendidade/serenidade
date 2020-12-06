@@ -50,7 +50,7 @@ const Reflection: React.FC = () => {
     return function cleanup () {
       setReflections([])
     }
-  }, [isFocused])
+  }, [isFocused, id])
 
   async function handleDeleteReflection (reflectionId:number):Promise<void> {
     try {
