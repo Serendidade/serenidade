@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useNavigation, useIsFocused, DrawerActions } from '@react-navigation/native'
-import { SafeAreaView, FlatList, Alert, View } from 'react-native'
+import { SafeAreaView, FlatList, Alert } from 'react-native'
 import { format, parseISO } from 'date-fns'
 import pt from 'date-fns/locale/pt'
 
